@@ -1,0 +1,22 @@
+const troubles=[['💧','パサつき','洗うたびに広がる、まとまらない乾燥ダメージ'],['🌀','広がり','湿気で一気に崩れるスタイルにうんざり'],['⚡','ダメージ','熱を当てるたびに傷んでいく気がして不安']];
+const features=[['🌡️','5段階温度調節','120°C〜200°C','髪質・スタイルに合わせて最適な温度を選択。ダメージを最小限に抑えながら美しい仕上がりを実現。'],['⚡','瞬間加熱30秒','サロンスピード技術','スイッチを入れてからわずか30秒。忙しい朝もストレスなし。毎日使いたくなる快適さ。'],['✨','ナノイオン放出','水分量121%UP','独自ナノイオンが髪の内側まで潤いを届け、ツヤとまとまりを同時に実現します。']];
+const voices=[['assets/voice-tanaka.jpg','田中 M.','細め・乾燥ダメージ毛','30秒で加熱されるのが本当に助かります。朝のバタバタした時間でも使えて、仕上がりがサロン帰りみたい！'],['assets/voice-sato.jpg','佐藤 K.','くせ毛・広がりやすい','くせ毛がコンプレックスでしたが、これを使い始めて毎朝鏡を見るのが楽しくなりました。ツヤが全然違います。'],['assets/voice-yamamoto.jpg','山本 R.','カラー毛・ダメージが気になる','カラーしているので熱ダメージが心配でしたが、低温モードで使うと傷まず、むしろツヤが出てきた気がします！']];
+const comparison=[['加熱時間','30秒','60秒','90秒'],['温度調節','5段階','3段階','2段階'],['イオン機能','✓','✓','✗'],['自動電源オフ','✓','✓','✗'],['価格（税込）','¥15,800','¥9,800','¥5,800']];
+const steps=[['assets/step-1.jpg','STEP 01','電源を入れる','ボタンを押してON。インジケーターが点灯します。'],['assets/step-2.jpg','STEP 02','温度を選ぶ','髪質に合わせて120〜200°Cの5段階から選択。'],['assets/step-3.jpg','STEP 03','根元からスライド','毛束を取り、根元から毛先へゆっくり1回スライド。'],['assets/step-4.jpg','STEP 04','完成','全体をスタイリングして完成。ツヤのある美しい髪に。']];
+const faqs=[['毎日使っても髪は傷みませんか？','低温モードや髪質に合わせた温度設定ができるため、熱による負担を抑えて使えます。'],['くせ毛でも効果はありますか？','5段階の温度調節とナノイオン技術で、くせや広がりのある髪もまとまりやすく整えます。'],['海外でも使えますか？','240Vまで対応しているため、対応電圧の地域で使用できます。渡航先の電圧をご確認ください。'],['保証期間はどのくらいですか？','30日間返品保証と、1年間のメーカー保証が付いています。'],['コードの長さは？コードレスですか？','1.8mのスイベル式コードを採用しています。']];
+const specs=[['🌡️','200℃','最高温度','5段階調節'],['⚡','30秒','加熱時間','瞬間加熱'],['💧','3倍','イオン量','従来比較'],['⚖️','280g','重量','軽量設計'],['🔌','1.8m','コード長','スイベル式'],['🌍','240V','対応電圧','海外対応']];
+const render=(selector,html)=>{document.querySelector(selector).innerHTML=html};
+render('[data-troubles]',troubles.map(([icon,title,text])=>`<article class="card"><div class="card-icon">${icon}</div><h3>${title}</h3><p>${text}</p></article>`).join(''));
+render('[data-features]',features.map(([icon,title,sub,text])=>`<article class="feature-card"><div class="feature-icon">${icon}</div><h3>${title}</h3><strong>${sub}</strong><p>${text}</p></article>`).join(''));
+render('[data-voices]',voices.map(([img,name,profile,text])=>`<article class="voice-card"><img class="voice-avatar" src="${img}" alt="${name}" loading="lazy"/><div class="voice-stars">★★★★★</div><blockquote>“${text}”</blockquote><cite>${name}<br/>${profile}</cite></article>`).join(''));
+render('[data-comparison]',comparison.map(row=>`<tr>${row.map((cell,i)=>`<td${i===1?' class="pro"':''}>${cell}</td>`).join('')}</tr>`).join(''));
+render('[data-steps]',steps.map(([img,num,title,text])=>`<article class="step-card"><img src="${img}" alt="${title}" loading="lazy"/><strong>${num}</strong><h3>${title}</h3><p>${text}</p></article>`).join(''));
+render('[data-faq]',faqs.map(([q,a])=>`<div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><strong>Q　${q}</strong><span>＋</span></button><div class="faq-answer">${a}</div></div>`).join(''));
+render('[data-spec]',specs.map(([icon,value,label,badge])=>`<article class="spec-card"><div class="spec-icon">${icon}</div><strong>${value}</strong><span>${label}</span><small>${badge}</small></article>`).join(''));
+
+const header=document.querySelector('[data-header]');
+window.addEventListener('scroll',()=>header.classList.toggle('is-scrolled',window.scrollY>20),{passive:true});
+const menuToggle=document.querySelector('.menu-toggle');const mobileNav=document.querySelector('.mobile-nav');
+menuToggle.addEventListener('click',()=>{const open=mobileNav.classList.toggle('is-open');menuToggle.setAttribute('aria-expanded',open)});
+mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobileNav.classList.remove('is-open');menuToggle.setAttribute('aria-expanded','false')}));
+document.querySelectorAll('.faq-question').forEach(button=>button.addEventListener('click',()=>{const item=button.parentElement;const open=item.classList.toggle('is-open');button.setAttribute('aria-expanded',open)}));
