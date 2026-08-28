@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="旅のシーンから宿と旅グルメをまとめて探せるトキナルのサービス紹介サイト">
+  <title>トキナル｜旅のシーンから、宿と食事を</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="figma-overrides.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="#top">トキナル <span>BETA</span></a>
+    <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false">☰</button>
+    <nav class="global-nav">
+      <a href="#about">サービスについて</a><a href="#features">機能・強み</a><a href="#howto">使い方</a>
+      <button class="btn btn-outline">ログイン</button><a class="btn btn-accent" href="#signup">無料で登録</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero section-light">
+      <div class="hero-copy">
+        <p class="eyebrow">Scene × Stay × Gourmet</p>
+        <h1>旅の<span class="hero-accent">シーン</span>から、<br>宿と食事を、<br>いっぺんに。</h1>
+        <p class="lead">記念日・家族旅行・ひとり旅。旅の目的を選ぶだけで、シーンに合う宿と旅グルメをまとめて提案します。</p>
+        <a class="btn btn-accent btn-large" href="#search">シーンから旅を探す（無料） <span>→</span></a>
+        <p class="microcopy">登録不要で今すぐ体験・会員登録は30秒</p>
+      </div>
+      <div class="hero-visual">
+        <div class="browser-mock">
+          <div class="browser-bar"><i></i><i></i><i></i><span>tokinaru.jp / search</span></div>
+          <p class="mock-step">Step 1 of 3 — 旅のシーンを選んでください</p>
+          <div class="mock-scenes">
+            <button class="mock-scene active"><img src="assets/scene-anniversary.jpg" alt=""><b>記念日・<br>特別な夜</b><small>✓ 選択中</small></button>
+            <button class="mock-scene"><img src="assets/scene-family.jpg" alt=""><b>家族旅行・<br>子連れ</b></button>
+            <button class="mock-scene"><img src="assets/scene-solo.jpg" alt=""><b>ひとり旅</b></button>
+            <button class="mock-scene"><img src="assets/scene-group.jpg" alt=""><b>友人・<br>グループ</b></button>
+          </div>
+          <div class="mock-results"><p>「記念日・特別な夜」の宿と旅グルメ — <strong>342件ヒット</strong></p><div><img src="assets/stay-mountain.jpg" alt="山の宿 花水木"><img src="assets/gourmet.jpg" alt="旬彩 つきじ"><img src="assets/plan.jpg" alt="宿 嵐山庵"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="search" class="scene-search section-cream section-pad">
+      <div class="section-heading"><p class="eyebrow">Find your scene</p><h2>今回の旅は、どんなシーン？</h2><p>シーンを選ぶだけで、宿と旅グルメを提案します。</p></div>
+      <div class="scene-grid" id="sceneGrid"></div>
+      <div class="search-result"><div><span class="result-label">「記念日・特別な夜」の宿と旅グルメ</span><strong id="resultCount">342件</strong></div><div class="restaurant-grid" id="restaurantGrid"></div></div>
+    </section>
+
+    <section class="problem section-light section-pad">
+      <div class="two-col">
+        <div><p class="eyebrow">Problem</p><h2>「せっかくの旅なのに、<br>食事だけ妥協した」</h2><p>旅先での体験にこだわりを持つ人ほど、宿と食事のミスマッチで後悔する。そんな課題を解決するのが、トキナルです。</p><blockquote>「宿は3時間かけて選んだのに、夜ご飯は近くの居酒屋に入っただけ。もったいなかったと思いました。」<cite>田中 あゆみ｜35歳・東京都</cite></blockquote></div>
+        <img src="assets/scene-search.jpg" alt="山と湖の旅の風景">
+      </div>
+      <div class="stats"><div><strong>72%</strong><span>旅行中の食事選びに<br>迷った・失敗した経験あり</span></div><div><strong>68%</strong><span>宿の雰囲気と食事の<br>ミスマッチを感じた</span></div><div><strong>3.2h</strong><span>旅行計画に費やす<br>平均調査時間</span></div></div>
+    </section>
+
+    <section id="about" class="about section-cream section-pad"><div class="section-heading"><p class="eyebrow">About Tokinaru</p><h2>トキナルとは——</h2><p>旅行シーン別に、宿泊施設と旅グルメをセットで探せる、国内旅行のためのディスカバリーサービス。</p></div><div class="pillars"><article><b>01</b><h3>シーンを選ぶだけ</h3><p>記念日・家族旅行・ひとり旅など、目的をタップするだけで最適な候補が絞り込まれます。</p></article><article><b>02</b><h3>宿と食事を発見</h3><p>シーンに合う宿泊施設と近隣グルメを同一画面で比較。外部サービスを行き来する手間がありません。</p></article><article><b>03</b><h3>旅のすべてをひとつに</h3><p>選んだ宿・食事をマイプランに保存。旅行前から当日の案内までトキナルで完結します。</p></article></div></section>
+
+    <section id="features" class="features section-navy section-pad"><div class="section-heading"><p class="eyebrow">Why Tokinaru</p><h2>旅の満足度にこだわった、<br>4つの理由</h2></div><div class="feature-grid"><article><span>01</span><h3>旅行シーン別検索</h3><p>目的を選ぶだけで、最適な施設が即座に絞り込まれます。</p></article><article><span>02</span><h3>旅グルメ連携</h3><p>宿の周辺グルメを旅行者目線でキュレーション。</p></article><article><span>03</span><h3>同時比較・保存</h3><p>宿と食事を1画面で比較し、マイプランへ保存できます。</p></article><article><span>04</span><h3>独自キュレーション</h3><p>量より質。専門チームが審査した施設を掲載しています。</p></article></div><a class="btn btn-light" href="#search">まずはシーンで探してみる（登録不要）→</a></section>
+
+    <section class="trust section-light section-pad"><div class="section-heading"><p class="eyebrow">Trust & Safety</p><h2>はじめての方も、<br>安心して使える</h2><p>使いやすさと安全性を両立し、旅の計画をサポートします。</p></div><div class="trust-grid"><article><b>◯</b><h3>個人情報の安全な管理</h3><p>SSL暗号化通信を採用し、登録情報を厳格に管理します。</p></article><article><b>◯</b><h3>施設の独自審査基準</h3><p>掲載前に品質チェックを実施し、情報を継続モニタリングします。</p></article><article><b>◯</b><h3>完全無料・解約自由</h3><p>基本機能は無料。いつでもアカウントを削除できます。</p></article><article><b>◯</b><h3>24時間サポート対応</h3><p>旅行中のトラブルにもチャット・メールで対応します。</p></article></div><div class="big-stats"><strong>2,400+</strong><span>掲載施設数</span><strong>47</strong><span>対応都道府県</span><strong>4.7</strong><span>ユーザー満足度</span></div></section>
+
+    <section class="voices section-cream section-pad"><div class="section-heading"><p class="eyebrow">User voices</p><h2>実際に旅した人たちの声</h2><p>ベータ版ユーザー186名へのアンケートより。満足度4.7 / 5.0</p></div><div class="voice-grid" id="voiceGrid"></div></section>
+
+    <section id="howto" class="howto section-light section-pad"><div class="section-heading"><p class="eyebrow">How it works</p><h2>登録から旅まで、<br>たった4ステップ</h2></div><div class="steps"><article><b>01</b><img src="assets/scene-search.jpg" alt="旅行シーンを選ぶ"><h3>旅行シーンを選ぶ</h3><p>記念日・家族旅行・ひとり旅など、今回の旅の目的を選択。</p></article><article><b>02</b><img src="assets/stay-mountain.jpg" alt="宿と旅グルメを探す"><h3>宿と旅グルメを探す</h3><p>写真・口コミ・アクセス情報をまとめて確認できます。</p></article><article><b>03</b><img src="assets/gourmet.jpg" alt="マイプランに保存"><h3>マイプランに保存</h3><p>気に入った施設を保存し、仲間と共有できます。</p></article><article><b>04</b><img src="assets/plan.jpg" alt="当日旅先で活用"><h3>当日・旅先で活用</h3><p>スマートフォンでプランを確認しながら旅を楽しめます。</p></article></div></section>
+
+    <section class="faq section-cream section-pad"><div class="section-heading"><p class="eyebrow">FAQ</p><h2>よくある質問</h2></div><div class="faq-list" id="faqList"></div></section>
+
+    <section id="chat" class="chatbot section-light section-pad">
+      <div class="section-heading"><p class="eyebrow">Travel Concierge</p><h2>旅の相談を、AIコンシェルジュに</h2><p>希望のシーンや食事の好みを入力すると、トキナルのおすすめを案内します。</p></div>
+      <div class="chat-window" aria-label="トキナルAIコンシェルジュ（デモ）">
+        <div class="chat-head"><span>トキナル AIコンシェルジュ</span><small>オンライン</small></div>
+        <div class="chat-messages" id="chatMessages"><p class="chat-bubble bot">こんにちは。次の旅はどんなシーンですか？<br>例：京都で記念日、落ち着いた和食</p></div>
+        <form class="chat-form" id="chatForm"><input id="chatInput" placeholder="旅の希望を入力してください" autocomplete="off"><button class="btn btn-accent" type="submit">送信</button></form>
+        <small class="chat-note">※現在は動作確認用のデモです。Dify公開URL接続時に置き換えます。</small>
+      </div>
+    </section>
+
+    <section id="signup" class="signup section-navy section-pad"><div class="signup-copy"><p class="eyebrow">Join Tokinaru</p><h2>旅の失敗を、<br>もうくり返さない。</h2><p>登録は30秒。完全無料・クレジットカード不要です。</p><ul><li>シーン別検索が無制限で使える</li><li>宿と旅グルメのセット提案</li><li>マイプランに保存・管理</li><li>旅行先の情報をスマホで確認</li></ul></div><form id="signupForm"><h3>無料で登録する</h3><label>ニックネーム<input required placeholder="例：あゆみ"></label><label>メールアドレス<input type="email" required placeholder="example@email.com"></label><label>よく使う旅行シーン<select><option>選択してください</option><option>記念日・カップル旅行</option><option>家族旅行・子連れ</option><option>ひとり旅</option><option>友人・グループ旅行</option></select></label><button class="btn btn-accent" type="submit">旅を探し始める（無料）→</button><small>登録することで利用規約・プライバシーポリシーに同意したものとみなします。</small></form></section>
+  </main>
+  <footer class="site-footer"><div class="logo">トキナル <span>BETA</span></div><p>旅行シーン別に、宿と旅グルメをまとめて探せる。国内旅行のための新しいディスカバリーサービス。</p><div class="footer-links"><div><b>サービス</b><a href="#search">シーン別検索</a><a href="#features">旅グルメ</a><a href="#howto">マイプラン</a></div><div><b>サポート</b><a href="#faq">よくある質問</a><a href="#howto">使い方ガイド</a><a href="#signup">お問い合わせ</a></div><div><b>アプリ</b><span>App Store / iOS</span><span>Google Play / Android</span></div></div><small>© 2024 トキナル Inc. All rights reserved.</small></footer>
+  <script src="script.js"></script>
+</body>
+</html>
