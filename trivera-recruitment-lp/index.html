@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRIVERA建設 採用サイト | デザインカンプ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --base-color: #F8F9FA;
+  --main-color: #1A3A52;
+  --accent-color: #4A7C59;
+  --text-primary: #1A1A1A;
+  --text-secondary: #4A4A4A;
+  --text-tertiary: #808080;
+  --border-light: #E8E8E8;
+  --white: #FFFFFF;
+}
+
+html, body {
+  font-family: 'Noto Serif JP', serif;
+  color: var(--text-primary);
+  background-color: var(--base-color);
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 600;
+  color: var(--main-color);
+}
+
+h1 { font-size: 56px; line-height: 1.2; letter-spacing: -0.5px; }
+h2 { font-size: 36px; line-height: 1.3; margin-bottom: 24px; }
+h3 { font-size: 18px; margin-bottom: 12px; }
+h4 { font-size: 16px; font-weight: 600; }
+
+p { font-size: 15px; margin-bottom: 12px; }
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+}
+
+.col-12 { grid-column: span 12; }
+.col-6 { grid-column: span 6; }
+.col-4 { grid-column: span 4; }
+
+header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border-light);
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--main-color);
+  letter-spacing: 1px;
+}
+
+.nav-cta {
+  padding: 10px 20px;
+  background: var(--accent-color);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.nav-cta:hover {
+  background: #3a6a4a;
+}
+
+section {
+  padding: 80px 0;
+  background: var(--white);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.section-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+  align-items: center;
+}
+
+.hero-text h1 {
+  margin-bottom: 32px;
+  color: var(--main-color);
+}
+
+.hero-text p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s;
+  cursor: pointer;
+  border: none;
+  font-family: 'Noto Serif JP', serif;
+}
+
+.btn-primary {
+  background: var(--main-color);
+  color: var(--white);
+  margin-right: 12px;
+}
+
+.btn-primary:hover {
+  background: #132a3a;
+}
+
+.btn-secondary {
+  background: var(--base-color);
+  color: var(--main-color);
+  border: 1.5px solid var(--main-color);
+}
+
+.btn-secondary:hover {
+  background: #f0f2f5;
+}
+
+.hero-image {
+  background: linear-gradient(90deg, rgba(26,58,82,.82), rgba(26,58,82,.15)), url('trivera-assets/hero-construction.png') center/cover;
+  border-radius: 4px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.stat-card {
+  background: var(--base-color);
+  padding: 32px 20px;
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid var(--border-light);
+}
+
+.stat-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--main-color);
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  font-weight: 600;
+}
+
+.faq-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-question {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--main-color);
+  margin-bottom: 12px;
+}
+
+.faq-answer {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.project-card {
+  background: var(--white);
+}
+
+.project-image {
+  background: linear-gradient(rgba(26,58,82,.35),rgba(26,58,82,.35)), url('trivera-assets/team-office.png') center/cover;
+  height: 250px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+}
+
+.project-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--main-color);
+  margin-bottom: 8px;
+}
+
+.project-meta {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.cta-section {
+  background: var(--base-color);
+  padding: 32px;
+  border-radius: 4px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.cta-section h3 {
+  margin-bottom: 12px;
+}
+
+.cta-section p {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  margin-bottom: 16px;
+}
+
+.interview-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.interview-item:last-child {
+  border-bottom: none;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(rgba(26,58,82,.35),rgba(26,58,82,.35)), url('trivera-assets/team-office.png') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  font-size: 12px;
+}
+
+.interview-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--main-color);
+  margin-bottom: 4px;
+}
+
+.interview-role {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-bottom: 12px;
+}
+
+.interview-quote {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-style: italic;
+  line-height: 1.8;
+}
+
+.timeline {
+  margin-left: 32px;
+}
+
+.timeline-item {
+  margin-bottom: 40px;
+  padding-left: 32px;
+  border-left: 2px solid var(--border-light);
+  position: relative;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 0;
+  width: 14px;
+  height: 14px;
+  background: var(--white);
+  border: 2px solid var(--accent-color);
+  border-radius: 50%;
+}
+
+.timeline-year {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.timeline-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--main-color);
+  margin-bottom: 8px;
+}
+
+.timeline-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.form-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--main-color);
+  margin-bottom: 8px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  background: rgba(74, 124, 89, 0.02);
+}
+
+.highlight-box {
+  background: var(--base-color);
+  border-left: 4px solid var(--main-color);
+  padding: 16px 20px;
+  margin: 24px 0;
+  border-radius: 0;
+}
+
+.highlight-box p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--main-color);
+}
+
+.form-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.form-image {
+  background: linear-gradient(rgba(26,58,82,.35),rgba(26,58,82,.35)), url('trivera-assets/team-office.png') center/cover;
+  width: 100%;
+  height: 280px;
+  border-radius: 4px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-side h3 {
+  font-size: 16px;
+  color: var(--main-color);
+  margin-bottom: 12px;
+  margin-top: 16px;
+}
+
+.form-side p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.final-cta {
+  background: var(--base-color);
+  padding: 80px 0;
+  text-align: center;
+}
+
+.final-cta h2 {
+  margin-bottom: 16px;
+}
+
+.final-cta p {
+  max-width: 600px;
+  margin: 0 auto 32px;
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+footer {
+  background: var(--main-color);
+  color: var(--white);
+  padding: 40px 0;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+
+.footer-col h3 {
+  color: var(--white);
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.footer-col p {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 8px;
+}
+
+.accent-text {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.visual-svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.project-image {
+  background: linear-gradient(rgba(26,58,82,.42),rgba(26,58,82,.42)), url('trivera-assets/hero-construction.png') center/cover;
+  height: 250px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  position: relative;
+  overflow: hidden;
+}
+
+.form-image {
+  background: linear-gradient(rgba(26,58,82,.42),rgba(26,58,82,.42)), url('trivera-assets/team-office.png') center/cover;
+  width: 100%;
+  height: 280px;
+  border-radius: 4px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  section {
+    padding: 40px 0;
+  }
+
+  .hero, .form-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-section {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .col-6 {
+    grid-column: span 12;
+  }
+
+  h1 { font-size: 36px; }
+  h2 { font-size: 24px; }
+
+  .interview-item {
+    grid-template-columns: 80px 1fr;
+    gap: 16px;
+  }
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+.hero-image .visual-svg,.project-image .visual-svg,.form-image .visual-svg,.avatar .visual-svg{display:none;}
+/* Photo-led overlays */
+.hero-section .container,.workstyle-section .container{position:relative}
+.hero-section .hero{position:relative;display:block;min-height:520px;padding:0;overflow:hidden}
+.hero-section .hero-image{position:absolute;inset:0;width:100%;height:100%!important;border-radius:4px;background:linear-gradient(90deg,rgba(12,38,58,.88) 0%,rgba(12,38,58,.52) 48%,rgba(12,38,58,.08) 100%),url('trivera-assets/hero-construction.png') center/cover}
+.hero-section .hero-text{position:relative;z-index:2;max-width:680px;padding:112px 64px;color:#fff}
+.hero-section .hero-text h1,.hero-section .hero-text p{color:#fff}.hero-section .hero-text p{max-width:570px}.hero-section .hero-text .btn-secondary{background:rgba(255,255,255,.88)}
+.workstyle-section .grid{position:relative;display:block;min-height:390px;overflow:hidden;border-radius:4px;background:linear-gradient(90deg,rgba(12,38,58,.9),rgba(12,38,58,.3)),url('trivera-assets/site-manager.png') center/cover}
+.workstyle-section .grid>.col-12,.workstyle-section .grid>.col-6:nth-of-type(2){position:relative;z-index:2;width:60%;padding:52px 56px;color:#fff}.workstyle-section .grid>.col-6:first-of-type p{color:#fff}.workstyle-section .grid>.col-6:nth-of-type(3){display:none}
+.project-image{background:linear-gradient(rgba(26,58,82,.35),rgba(26,58,82,.35)),url('trivera-assets/architect.png') center/cover}
+.form-image{background:linear-gradient(rgba(26,58,82,.3),rgba(26,58,82,.3)),url('trivera-assets/recruit-team.png') center/cover}
+@media(max-width:768px){.hero-section .hero-text{padding:72px 28px}.hero-section .hero{min-height:600px}.hero-section .hero-image{background-position:78% 35%}.workstyle-section .grid>.col-12,.workstyle-section .grid>.col-6:nth-of-type(2){width:100%;padding:38px 28px}.workstyle-section .grid{min-height:520px}}
+.hero-section{padding:0;border-bottom:0}.hero-section .container{max-width:none;padding:0}.hero-section .hero{border-radius:0;width:100vw;margin-left:calc(50% - 50vw)}
+.workstyle-section .grid> .col-12 h2{color:#fff}.workstyle-section .grid>.col-6:nth-of-type(2) p{color:rgba(255,255,255,.94)}
+.project-grid .project-card:nth-child(1) .project-image{background-image:linear-gradient(rgba(26,58,82,.35),rgba(26,58,82,.35)),url('trivera-assets/site-manager.png')}
+.project-grid .project-card:nth-child(2) .project-image{background-image:linear-gradient(rgba(26,58,82,.35),rgba(26,58,82,.35)),url('trivera-assets/architect.png')}
+.project-grid .project-card:nth-child(3) .project-image{background-image:linear-gradient(rgba(26,58,82,.35),rgba(26,58,82,.35)),url('trivera-assets/recruit-team.png')}
+.interview-item:first-of-type .avatar{background-image:linear-gradient(rgba(26,58,82,.2),rgba(26,58,82,.2)),url('trivera-assets/yamashita-profile.png')}
+.interview-item:last-of-type .avatar{background-image:linear-gradient(rgba(26,58,82,.2),rgba(26,58,82,.2)),url('trivera-assets/nishiyama-profile.png')}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-content">
+      <div class="logo">TRIVERA建設 採用</div>
+      <a href="#" class="nav-cta">インターンシップに応募</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- Section 01: First View -->
+<section class="hero-section">
+  <div class="container">
+    <div class="hero">
+      <div class="hero-text">
+        <h1>残業月17時間で、<br>国内No.1を学ぶ。</h1>
+        <p>あなたは建設業で成長したい。でも、長時間労働で自分の時間がない。TRIVERAなら両立できます。定時で帰りながら、大型現場で一流のスキルを身につける。</p>
+        <div>
+          <button class="btn btn-primary">詳しく見る</button>
+          <button class="btn btn-secondary">インターンシップに応募する</button>
+        </div>
+      </div>
+      <div class="hero-image">
+        <svg class="visual-svg" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            </pattern>
+            <linearGradient id="building-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.15" />
+              <stop offset="100%" style="stop-color:#4A7C59;stop-opacity:0.3" />
+            </linearGradient>
+          </defs>
+          <rect width="500" height="400" fill="url(#grid-pattern)"/>
+          
+          <!-- 建築図面モチーフ -->
+          <g opacity="0.3">
+            <rect x="80" y="80" width="140" height="180" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+            <rect x="280" y="100" width="120" height="200" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+            <line x1="150" y1="80" x2="150" y2="260" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            <line x1="80" y1="150" x2="220" y2="150" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            <line x1="280" y1="180" x2="400" y2="180" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          </g>
+          
+          <!-- 信頼と成長を表現する上昇するライン -->
+          <g opacity="0.5">
+            <path d="M 60 300 Q 150 200 240 180 T 420 100" fill="none" stroke="rgba(74,124,89,0.6)" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="60" cy="300" r="6" fill="rgba(74,124,89,0.8)"/>
+            <circle cx="150" cy="200" r="5" fill="rgba(74,124,89,0.7)"/>
+            <circle cx="240" cy="180" r="5" fill="rgba(74,124,89,0.7)"/>
+            <circle cx="420" cy="100" r="6" fill="rgba(74,124,89,0.9)"/>
+          </g>
+          
+          <!-- 39年の信頼を表現する重ねられた要素 -->
+          <g opacity="0.4">
+            <circle cx="430" cy="320" r="35" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+            <circle cx="430" cy="320" r="25" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+            <circle cx="430" cy="320" r="15" fill="rgba(74,124,89,0.3)"/>
+          </g>
+          
+          <!-- 39を暗示する要素 -->
+          <text x="430" y="330" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="28" font-weight="700" fill="rgba(255,255,255,0.2)">39</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 02: 働き方×経営基盤 -->
+<section class="workstyle-section">
+  <div class="container">
+    <div class="grid">
+      <div class="col-12">
+        <h2>働く時間を、<br>未来をつくる時間へ。</h2>
+      </div>
+      <div class="col-6">
+        <p>建設業界の平均月残業時間は29.6時間。TRIVERAは17時間。42%削減。有給取得率71%。これは『一企業の努力』ではなく、『39年連続で増益する経営基盤があるからこそ実現』する働き方です。</p>
+        <p style="color: var(--text-tertiary); font-size: 13px;">自己資本比率73.5%（業界平均30～40%）。潰れない企業だからこそ、短い時間で質の高い働き方を実現できています。</p>
+      </div>
+      <div class="col-6">
+        <div class="hero-image" style="height: 280px;">
+          <svg class="visual-svg" viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <pattern id="dots-pattern" width="30" height="30" patternUnits="userSpaceOnUse">
+                <circle cx="15" cy="15" r="3" fill="rgba(255,255,255,0.08)"/>
+              </pattern>
+            </defs>
+            <rect width="500" height="280" fill="url(#dots-pattern)"/>
+            
+            <!-- 月17時間を表現する時計モチーフ -->
+            <g opacity="0.35">
+              <circle cx="120" cy="140" r="60" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+              <circle cx="120" cy="140" r="50" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <line x1="120" y1="95" x2="120" y2="50" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-linecap="round"/>
+              <line x1="120" y1="140" x2="155" y2="140" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="120" cy="140" r="6" fill="rgba(255,255,255,0.4)"/>
+            </g>
+            
+            <!-- 信頼の堅牢性を表現するグリッド構造 -->
+            <g opacity="0.3">
+              <rect x="260" y="50" width="200" height="180" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+              <line x1="310" y1="50" x2="310" y2="230" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <line x1="360" y1="50" x2="360" y2="230" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <line x1="260" y1="100" x2="460" y2="100" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <line x1="260" y1="150" x2="460" y2="150" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <line x1="260" y1="200" x2="460" y2="200" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            </g>
+            
+            <!-- 71%の有給取得率を表現するプログレス -->
+            <g opacity="0.4">
+              <rect x="80" y="210" width="120" height="8" fill="rgba(255,255,255,0.1)" rx="4"/>
+              <rect x="80" y="210" width="85" height="8" fill="rgba(74,124,89,0.5)" rx="4"/>
+              <text x="215" y="218" font-family="'Cormorant Garamond', serif" font-size="12" fill="rgba(255,255,255,0.4)">71%</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">17h</div>
+        <div class="stat-label">月平均残業</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">71%</div>
+        <div class="stat-label">有給取得率</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">39期</div>
+        <div class="stat-label">連続増益</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">73.5%</div>
+        <div class="stat-label">自己資本比率</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 03: 親からのよくある質問 -->
+<section style="background: var(--base-color);">
+  <div class="container">
+    <h2>親からの質問に、数字で答える。</h2>
+    <p style="margin-bottom: 32px; color: var(--text-secondary);">『本当に大丈夫な企業か』という親からの心配を、事実で払拭します。</p>
+    <div class="faq-section">
+      <div>
+        <div class="faq-item">
+          <div class="faq-question">Q. 本当に潰れない企業ですか？</div>
+          <div class="faq-answer">A. はい。39期連続増益、自己資本比率73.5%（業界平均の2倍）。経営が非常に安定しています。東証上場企業相当の財務基盤です。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Q. 女性も働けますか？</div>
+          <div class="faq-answer">A. はい。女性従業員は全体の40%。施工管理、設計、営業など様々な職種で活躍しています。男女比6:4のバランスの取れたチームです。</div>
+        </div>
+      </div>
+      <div>
+        <div class="faq-item">
+          <div class="faq-question">Q. 給与は安定していますか？</div>
+          <div class="faq-answer">A. はい。大卒初任給は業界標準の26万円～。5年後40万円、10年後50万円以上と実績があります。年功序列で安定的に上昇します。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Q. 長期のキャリアを構築できますか？</div>
+          <div class="faq-answer">A. はい。月17時間の短い残業時間で、大型プロジェクトの経験を積み重ねることができます。5年でマネージャー、10年で部門責任者という実績があります。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 04: 国内No.1実績 -->
+<section>
+  <div class="container">
+    <h2>国内No.1の実績＝<br>大型現場での学びの連続</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="project-image">
+          <svg class="visual-svg" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="proj1-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#1A3A52;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#4A7C59;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <rect width="400" height="250" fill="url(#proj1-grad)"/>
+            <!-- 医療施設 -->
+            <g opacity="0.3">
+              <rect x="80" y="60" width="100" height="130" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="3"/>
+              <rect x="190" y="40" width="100" height="150" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="3"/>
+              <circle cx="130" cy="125" r="20" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2"/>
+              <circle cx="240" cy="115" r="20" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2"/>
+            </g>
+            <text x="200" y="220" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="18" fill="rgba(255,255,255,0.4)" font-weight="600">45,000㎡</text>
+          </svg>
+        </div>
+        <div class="project-title">渋谷の大型医療施設</div>
+        <div class="project-meta">2023年完成 | 施工面積 45,000㎡</div>
+      </div>
+      <div class="project-card">
+        <div class="project-image">
+          <svg class="visual-svg" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="proj2-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#4A7C59;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#1A3A52;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <rect width="400" height="250" fill="url(#proj2-grad)"/>
+            <!-- 橋梁 -->
+            <g opacity="0.3">
+              <line x1="50" y1="120" x2="350" y2="120" stroke="rgba(255,255,255,0.4)" stroke-width="8" stroke-linecap="round"/>
+              <line x1="80" y1="120" x2="80" y2="180" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+              <line x1="140" y1="120" x2="140" y2="180" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+              <line x1="200" y1="120" x2="200" y2="180" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+              <line x1="260" y1="120" x2="260" y2="180" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+              <line x1="320" y1="120" x2="320" y2="180" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+            </g>
+            <text x="200" y="220" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="18" fill="rgba(255,255,255,0.4)" font-weight="600">1.2km</text>
+          </svg>
+        </div>
+        <div class="project-title">都内橋梁プロジェクト</div>
+        <div class="project-meta">2024年完成 | 延長 1.2km</div>
+      </div>
+      <div class="project-card">
+        <div class="project-image">
+          <svg class="visual-svg" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="proj3-grad" x1="50%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%" style="stop-color:#1A3A52;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#4A7C59;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <rect width="400" height="250" fill="url(#proj3-grad)"/>
+            <!-- 商業施設 -->
+            <g opacity="0.3">
+              <rect x="60" y="50" width="70" height="140" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+              <rect x="150" y="40" width="70" height="150" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+              <rect x="240" y="50" width="70" height="140" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+              <rect x="70" y="60" width="20" height="25" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <rect x="100" y="60" width="20" height="25" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <rect x="160" y="50" width="20" height="25" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <rect x="190" y="50" width="20" height="25" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <rect x="250" y="60" width="20" height="25" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <rect x="280" y="60" width="20" height="25" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            </g>
+            <text x="200" y="220" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="18" fill="rgba(255,255,255,0.4)" font-weight="600">80,000㎡</text>
+          </svg>
+        </div>
+        <div class="project-title">商業施設再開発</div>
+        <div class="project-meta">2025年竣工予定 | 商業面積 80,000㎡</div>
+      </div>
+    </div>
+    <div class="cta-section">
+      <h3>これらの現場での働き方は、実際どうなのか？</h3>
+      <p>先輩社員のリアルな声を聞いてみてください。</p>
+      <button class="btn btn-secondary">先輩社員インタビューを見る</button>
+    </div>
+  </div>
+</section>
+
+<!-- Section 05: 社員インタビュー -->
+<section>
+  <div class="container">
+    <h2>『月17時間で大成長』は、本当です。</h2>
+    <p style="margin-top: 16px; margin-bottom: 40px; color: var(--text-secondary);">入社前は疑問だった。『本当に17時間なのか』『そんな短い時間で何が学べるのか』。でも、入社後は納得しました。</p>
+    <div class="interview-item">
+      <div class="avatar">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="35" r="18" fill="rgba(255,255,255,0.3)"/>
+          <path d="M 30 70 Q 30 50 50 50 Q 70 50 70 70" fill="rgba(255,255,255,0.2)"/>
+        </svg>
+      </div>
+      <div>
+        <div class="interview-name">山下 大輝 / 設計デザイン部</div>
+        <div class="interview-role">入社：2025年 / 大学：東京大学 建築学科</div>
+        <div class="interview-quote">「新卒が大型現場で何ができるのか不安でした。でも実務経験を積むと、想像以上に責任を与えてもらえます。短い時間だから集中できる。そして時間があるから勉強できる。この環境は、成長の加速装置です。」</div>
+      </div>
+    </div>
+    <div class="interview-item">
+      <div class="avatar">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="35" r="18" fill="rgba(255,255,255,0.3)"/>
+          <path d="M 30 70 Q 30 50 50 50 Q 70 50 70 70" fill="rgba(255,255,255,0.2)"/>
+        </svg>
+      </div>
+      <div>
+        <div class="interview-name">西山 未来 / 施工管理部</div>
+        <div class="interview-role">入社：2024年 / 大学：京都大学 土木工学科</div>
+        <div class="interview-quote">「月17時間で本当に大型現場を任されるのか疑問でした。1年目から大型医療施設の安全管理補佐。2年目で独立した区間の全責任。むしろ時間に余裕があるから、自己啓発に時間を使えます。」</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 06: 働き方改革データ -->
+<section style="background: var(--base-color);">
+  <div class="container">
+    <h2>数字が、すべてを物語っている。</h2>
+    <div class="stats-grid">
+      <div class="stat-card" style="background: var(--white);">
+        <div class="stat-value">17h</div>
+        <div class="stat-label">月平均残業</div>
+        <p style="font-size: 12px; color: var(--text-tertiary); margin-top: 8px;">毎日定時に帰れる</p>
+      </div>
+      <div class="stat-card" style="background: var(--white);">
+        <div class="stat-value">71%</div>
+        <div class="stat-label">有給取得率</div>
+        <p style="font-size: 12px; color: var(--text-tertiary); margin-top: 8px;">年25日の休日</p>
+      </div>
+      <div class="stat-card" style="background: var(--white);">
+        <div class="stat-value">6:4</div>
+        <div class="stat-label">男女比率</div>
+        <p style="font-size: 12px; color: var(--text-tertiary); margin-top: 8px;">ダイバーシティを実現</p>
+      </div>
+      <div class="stat-card" style="background: var(--white);">
+        <div class="stat-value">37.2</div>
+        <div class="stat-label">平均年齢</div>
+        <p style="font-size: 12px; color: var(--text-tertiary); margin-top: 8px;">活力ある組織</p>
+      </div>
+    </div>
+    <div class="cta-section" style="background: var(--white);">
+      <h3>『月17時間で帰れる』なら、あなたのキャリアはどう描ける？</h3>
+      <p>10年スパンでの成長ステップを確認してみてください。</p>
+      <button class="btn btn-secondary">キャリアパスを見る</button>
+    </div>
+  </div>
+</section>
+
+<!-- Section 07: キャリアパス -->
+<section>
+  <div class="container">
+    <h2>月17時間で、ここまで成長する。</h2>
+    <p style="margin-bottom: 40px; color: var(--text-secondary);">新卒から10年。あなたの『できること』が、こんなに増える。</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">入社0年</div>
+        <div class="timeline-title">施工管理補助 / 初任給 26万円</div>
+        <div class="timeline-desc">基本的な現場管理・工程管理を習得。最初の3ヶ月は、全てが勉強です。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">入社3年</div>
+        <div class="timeline-title">施工管理（担当） / 月給 33万円（27%UP）</div>
+        <div class="timeline-desc">自分の担当区間の全責任を負う。部下指導も開始。3年で、自分の責任を持つプロジェクトが増えます。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">入社5年</div>
+        <div class="timeline-title">施工管理（主任） / 月給 40万円（54%UP）</div>
+        <div class="timeline-desc">複数プロジェクト統括・組織マネジメント。5年で、マネージャーになっています。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">入社10年</div>
+        <div class="timeline-title">部門責任者 / 月給 50万円以上</div>
+        <div class="timeline-desc">部門全体の戦略立案・営業支援。10年後、あなたは業界で求められる人材です。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 08: FAQ -->
+<section style="background: var(--base-color);">
+  <div class="container">
+    <h2>よくある質問</h2>
+    <div class="faq-section">
+      <div>
+        <div class="faq-item">
+          <div class="faq-question">Q. インターンシップって何をするの？</div>
+          <div class="faq-answer">実際の施工現場や設計部門を体験します。先輩社員と一緒に現場に入り、『建設業の実像』を1日で感じることができます。『本当に月17時間なのか』『実際の働き方はどうなのか』、その全てが答えになります。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Q. 本当に月17時間なの？</div>
+          <div class="faq-answer">はい。2025年度の実績です。DXの導入、効率的な工程管理、チーム全体の意識改革で実現しています。インターンシップで『実際の現場』を見てください。</div>
+        </div>
+      </div>
+      <div>
+        <div class="faq-item">
+          <div class="faq-question">Q. 給与は？</div>
+          <div class="faq-answer">大卒初任給は業界標準の26万円～。インターンシップ参加後、詳細な給与体系をご説明します。キャリアパスセクションで『5年後40万円、10年後50万円以上』という実績も示しています。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Q. 海外配置はあります？</div>
+          <div class="faq-answer">はい。TRIVERA建設は海外拠点3拠点を展開しており、希望者には国際経験の機会があります。ただし、強制ではなく、キャリアの選択肢の一つです。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 09: フォーム -->
+<section>
+  <div class="container">
+    <h2>インターンシップに応募する</h2>
+    <div class="highlight-box">
+      <p><span style="color: var(--main-color); font-weight: 700;">30秒で完了</span> / 無料 / <span style="color: var(--main-color); font-weight: 700;">24時間以内に返信</span></p>
+    </div>
+    <div class="form-wrapper">
+      <div>
+        <div class="form-group">
+          <label class="form-label">氏名 <span style="color: #c00;">*</span></label>
+          <input type="text" class="form-input" placeholder="山田太郎">
+          <p style="font-size: 12px; color: var(--text-tertiary); margin-top: 4px;">※ 本名でお願いします</p>
+        </div>
+        <div class="form-group">
+          <label class="form-label">メールアドレス <span style="color: #c00;">*</span></label>
+          <input type="email" class="form-input" placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">電話番号 <span style="color: #c00;">*</span></label>
+          <input type="tel" class="form-input" placeholder="090-xxxx-xxxx">
+        </div>
+        <button class="btn btn-primary" style="width: 100%;">応募する</button>
+        <p style="font-size: 12px; color: var(--text-tertiary); margin-top: 12px;">申し込み後、24時間以内に採用チームから連絡いたします。</p>
+      </div>
+      <div class="form-side">
+        <div class="form-image">
+          <svg class="visual-svg" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="form-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#1A3A52;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#4A7C59;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <rect width="400" height="280" fill="url(#form-grad)"/>
+            
+            <!-- チームの結びつきを表現する手を繋ぐ -->
+            <g opacity="0.35">
+              <!-- 人1 -->
+              <circle cx="100" cy="100" r="20" fill="rgba(255,255,255,0.2)"/>
+              <rect x="85" y="125" width="30" height="50" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3"/>
+              <!-- 人2 -->
+              <circle cx="200" cy="80" r="20" fill="rgba(255,255,255,0.3)"/>
+              <rect x="185" y="105" width="30" height="50" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="3"/>
+              <!-- 人3 -->
+              <circle cx="300" cy="100" r="20" fill="rgba(255,255,255,0.2)"/>
+              <rect x="285" y="125" width="30" height="50" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3"/>
+              
+              <!-- つなぎ -->
+              <line x1="120" y1="140" x2="185" y2="110" stroke="rgba(74,124,89,0.4)" stroke-width="2" stroke-linecap="round"/>
+              <line x1="215" y1="110" x2="285" y2="140" stroke="rgba(74,124,89,0.4)" stroke-width="2" stroke-linecap="round"/>
+            </g>
+            
+            <!-- 信頼のシンボル -->
+            <g opacity="0.3">
+              <path d="M 200 200 L 210 215 L 225 215 L 215 225 L 218 240 L 200 233 L 182 240 L 185 225 L 175 215 L 190 215 Z" fill="rgba(74,124,89,0.4)"/>
+            </g>
+          </svg>
+        </div>
+        <h3>採用チーム一同がお待ちしています</h3>
+        <p>ご質問や不安なことがあれば、気軽にお問い合わせください。あなたのキャリアに向き合う環境がここにあります。</p>
+        <p style="font-size: 12px; color: var(--text-tertiary); margin-top: 12px;">recruitment@trivera.co.jp</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 10: 最下部CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>『月17時間で成長する』を体験してみませんか？</h2>
+    <p>ここまで読んでくれたあなたなら、もう迷う理由がない。インターンシップで、全てを確認できます。</p>
+    <button class="btn btn-primary">今すぐインターンシップに応募</button>
+    <p style="font-size: 12px; color: var(--text-tertiary); margin-top: 16px;">申し込み後、24時間以内に採用チームから返信します。</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>TRIVERA建設株式会社</h3>
+        <p><span style="font-family: 'Cormorant Garamond', serif;">TRIVERA CONSTRUCTION CO., LTD.</span></p>
+        <p>設立：1986年 / 従業員：1,127名 / 売上：1,200億円（2025年度）</p>
+      </div>
+      <div class="footer-col">
+        <p>東京都港区芝浦3丁目</p>
+        <p>採用チーム：recruitment@trivera.co.jp</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
