@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>旬彩 はなとき｜店舗詳細 - トキナル</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      background-color: #F5EFE4;
+      color: #3A2E20;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --base:    #F5EFE4;
+      --main:    #2C3E50;
+      --accent:  #D4845A;
+      --text-deep: #3A2E20;
+      --text-mid:  #5C4A36;
+      --text-light: #8A7565;
+      --icon-bg: #F0E4D4;
+      --dark-bg: #2C3E50;
+      --dark-sub: #E8D5B0;
+      --white:   #FFFFFF;
+      --shadow:  0 4px 20px rgba(44,62,80,0.10);
+      --radius:  12px;
+    }
+
+    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+    /* ===== HEADER ===== */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(245,239,228,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(212,132,90,0.15);
+    }
+    nav {
+      display: flex; align-items: center;
+      height: 64px; gap: 16px;
+      max-width: 960px; margin: 0 auto; padding: 0 24px;
+    }
+    .back-link {
+      display: flex; align-items: center; gap: 6px;
+      color: var(--text-mid); font-size: 14px; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--accent); }
+    .back-link::before { content: '←'; font-size: 16px; }
+    .nav-logo {
+      font-size: 20px; font-weight: 800; color: var(--main);
+      margin-left: auto;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    /* ===== STORE HERO ===== */
+    .store-hero {
+      width: 100%;
+      height: clamp(260px, 40vw, 420px);
+      background: linear-gradient(135deg, #E4D5BE 0%, #C9B89A 50%, #A89274 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: clamp(80px, 15vw, 140px);
+      position: relative; overflow: hidden;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(44,62,80,0.75) 0%, rgba(44,62,80,0.1) 60%, transparent 100%);
+    }
+    .hero-content {
+      position: absolute; bottom: 28px; left: 0; right: 0;
+      padding: 0 28px;
+    }
+    .hero-scene-tags {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;
+    }
+    .hero-tag {
+      background: rgba(212,132,90,0.9); color: #fff;
+      font-size: 12px; font-weight: 700;
+      padding: 4px 12px; border-radius: 20px;
+    }
+    .hero-name {
+      font-size: clamp(22px, 4vw, 36px);
+      font-weight: 800; color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      margin-bottom: 6px;
+    }
+    .hero-meta {
+      font-size: 14px; color: rgba(255,255,255,0.85);
+      display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+    }
+    .hero-rating {
+      display: flex; align-items: center; gap: 6px;
+    }
+    .stars { color: var(--accent); }
+
+    /* ===== MAIN LAYOUT ===== */
+    .detail-layout {
+      display: grid; grid-template-columns: 1fr 320px;
+      gap: 32px;
+      padding: 40px 0 80px;
+    }
+
+    /* ===== LEFT COLUMN ===== */
+    .section-block { margin-bottom: 40px; }
+    .block-title {
+      font-size: 18px; font-weight: 700;
+      color: var(--text-deep);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--icon-bg);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .block-title::before {
+      content: '';
+      width: 4px; height: 20px;
+      background: var(--accent); border-radius: 2px;
+      display: block;
+    }
+
+    /* INFO TABLE */
+    .info-table { width: 100%; border-collapse: collapse; }
+    .info-table tr { border-bottom: 1px solid var(--icon-bg); }
+    .info-table th {
+      padding: 14px 0; text-align: left;
+      font-size: 13px; font-weight: 600; color: var(--text-light);
+      width: 130px; vertical-align: top;
+    }
+    .info-table td {
+      padding: 14px 0 14px 16px;
+      font-size: 15px; color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    /* SCENE SUITABILITY */
+    .scene-list {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .scene-item {
+      background: var(--white); border-radius: 10px;
+      padding: 16px; text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .scene-icon { font-size: 24px; margin-bottom: 8px; }
+    .scene-label { font-size: 13px; font-weight: 600; color: var(--text-mid); margin-bottom: 6px; }
+    .scene-score {
+      font-size: 12px; font-weight: 700;
+    }
+    .score-great { color: var(--accent); }
+    .score-good  { color: #7B9E7B; }
+    .score-fair  { color: var(--text-light); }
+
+    /* PHOTO GALLERY */
+    .gallery {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 160px 160px;
+      gap: 8px; border-radius: var(--radius); overflow: hidden;
+    }
+    .gallery-item {
+      background: linear-gradient(135deg, #E0D0BA, #C8B89A);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px; cursor: pointer;
+      transition: filter 0.2s;
+    }
+    .gallery-item:hover { filter: brightness(0.9); }
+    .gallery-item:first-child { grid-row: span 2; font-size: 60px; }
+
+    /* REVIEWS */
+    .review-list { display: flex; flex-direction: column; gap: 20px; }
+    .review-card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 24px; box-shadow: var(--shadow);
+    }
+    .review-header {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; margin-bottom: 12px;
+    }
+    .reviewer { display: flex; align-items: center; gap: 10px; }
+    .avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--icon-bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .reviewer-name { font-size: 14px; font-weight: 700; color: var(--text-deep); }
+    .reviewer-meta { font-size: 12px; color: var(--text-light); margin-top: 2px; }
+    .review-stars { font-size: 14px; color: var(--accent); }
+    .review-text { font-size: 15px; color: var(--text-mid); line-height: 1.8; }
+    .review-tag {
+      display: inline-block; background: var(--icon-bg);
+      color: var(--accent); font-size: 11px; font-weight: 700;
+      padding: 2px 10px; border-radius: 20px; margin-top: 10px;
+    }
+
+    /* ===== RIGHT COLUMN (STICKY RESERVATION) ===== */
+    .reservation-panel {
+      position: sticky; top: 80px; align-self: start;
+    }
+    .res-card {
+      background: var(--white); border-radius: 16px;
+      padding: 28px; box-shadow: var(--shadow);
+      margin-bottom: 16px;
+    }
+    .res-price {
+      font-size: clamp(24px, 3vw, 32px); font-weight: 800;
+      color: var(--text-deep);
+    }
+    .res-price span { font-size: 14px; color: var(--text-light); font-weight: 400; }
+    .res-rating {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px; color: var(--text-mid);
+      margin: 8px 0 20px;
+    }
+    .res-stars { color: var(--accent); font-size: 15px; }
+    .res-form { display: flex; flex-direction: column; gap: 12px; }
+    .res-field label {
+      display: block; font-size: 12px; font-weight: 700;
+      color: var(--text-mid); margin-bottom: 4px;
+    }
+    .res-field select, .res-field input {
+      width: 100%; padding: 12px 14px;
+      border: 2px solid #E8D5B0; border-radius: 8px;
+      font-size: 14px; color: var(--text-deep);
+      background: var(--base); outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+    .res-field select:focus, .res-field input:focus { border-color: var(--accent); }
+    .btn-reserve {
+      width: 100%; padding: 16px;
+      background: var(--accent); color: var(--white);
+      border: none; border-radius: 10px;
+      font-size: 16px; font-weight: 700; cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 16px rgba(212,132,90,0.35);
+      margin-top: 4px;
+    }
+    .btn-reserve:hover { background: #C07348; transform: translateY(-2px); }
+    .res-note { font-size: 12px; color: var(--text-light); text-align: center; margin-top: 8px; }
+
+    /* NEARBY ACCOMMODATION */
+    .nearby-card {
+      background: var(--main); border-radius: 16px;
+      padding: 24px; color: var(--white);
+    }
+    .nearby-title {
+      font-size: 14px; font-weight: 700; margin-bottom: 12px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .nearby-title::before { content: '🏡'; }
+    .nearby-desc { font-size: 13px; color: var(--dark-sub); margin-bottom: 16px; line-height: 1.6; }
+    .btn-nearby {
+      display: block; width: 100%; padding: 12px;
+      background: var(--accent); color: var(--white);
+      border: none; border-radius: 8px;
+      font-size: 14px; font-weight: 700; cursor: pointer;
+      text-align: center; transition: background 0.2s;
+    }
+    .btn-nearby:hover { background: #C07348; }
+
+    /* ===== FIXED BOTTOM CTA (SP) ===== */
+    .fixed-reserve {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
+      background: rgba(245,239,228,0.97);
+      backdrop-filter: blur(8px);
+      padding: 12px 20px;
+      border-top: 1px solid rgba(212,132,90,0.2);
+    }
+    .fixed-reserve-inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .fixed-price { font-size: 18px; font-weight: 800; color: var(--text-deep); }
+    .fixed-price small { font-size: 12px; color: var(--text-light); font-weight: 400; }
+
+    /* ===== BREADCRUMB ===== */
+    .breadcrumb {
+      padding: 14px 0; font-size: 13px; color: var(--text-light);
+      display: flex; gap: 6px; align-items: center; flex-wrap: wrap;
+    }
+    .breadcrumb a { color: var(--accent); }
+    .breadcrumb span { opacity: 0.5; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .detail-layout { grid-template-columns: 1fr; }
+      .reservation-panel { position: static; }
+      .res-card { display: none; }
+      .fixed-reserve { display: block; }
+      .scene-list { grid-template-columns: repeat(2, 1fr); }
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 140px);
+      }
+      .gallery-item:first-child { grid-row: span 1; }
+      .info-table th { width: 100px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <a href="index.html" class="back-link">検索結果に戻る</a>
+      <div class="nav-logo">ト<span>キ</span>ナル</div>
+    </nav>
+  </header>
+
+  <!-- STORE HERO -->
+  <div class="store-hero">
+    🍣
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-scene-tags">
+        <span class="hero-tag">💍 記念日◎</span>
+        <span class="hero-tag">👩‍❤️‍👨 カップル◎</span>
+        <span class="hero-tag">🧳 ひとり旅◎</span>
+      </div>
+      <div class="hero-name">旬彩 はなとき</div>
+      <div class="hero-meta">
+        <span>和食・懐石</span>
+        <span>｜</span>
+        <span>京都・祇園</span>
+        <div class="hero-rating">
+          <span class="stars">★★★★★</span>
+          <strong style="color:#fff;">4.8</strong>
+          <span>（142件）</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">トップ</a>
+      <span>›</span>
+      <a href="#">旅先グルメ</a>
+      <span>›</span>
+      <a href="#">京都・祇園</a>
+      <span>›</span>
+      旬彩 はなとき
+    </div>
+
+    <div class="detail-layout">
+      <!-- LEFT COLUMN -->
+      <div class="detail-main">
+
+        <!-- 基本情報 -->
+        <div class="section-block">
+          <div class="block-title">基本情報</div>
+          <table class="info-table">
+            <tr>
+              <th>住所</th>
+              <td>京都府京都市東山区祇園町南側○○番地<br><a href="#" style="color: var(--accent); font-size: 13px;">地図で見る →</a></td>
+            </tr>
+            <tr>
+              <th>営業時間</th>
+              <td>
+                昼：11:30 〜 14:00（L.O. 13:30）<br>
+                夜：17:30 〜 22:00（L.O. 21:00）
+              </td>
+            </tr>
+            <tr>
+              <th>定休日</th>
+              <td>火曜日（祝日の場合は翌水曜日）</td>
+            </tr>
+            <tr>
+              <th>予算目安</th>
+              <td>
+                夜：¥8,000 〜 ¥15,000 / 人<br>
+                昼：¥3,000 〜 ¥6,000 / 人
+              </td>
+            </tr>
+            <tr>
+              <th>座席数</th>
+              <td>カウンター 8席 ／ 個室 2室（4名まで）</td>
+            </tr>
+            <tr>
+              <th>予約</th>
+              <td>
+                <span style="color: var(--accent); font-weight: 700;">◎ 予約可（推奨）</span><br>
+                <span style="font-size: 13px; color: var(--text-light);">特に週末・祝前日は1〜2週間前のご予約をおすすめします</span>
+              </td>
+            </tr>
+            <tr>
+              <th>アクセス</th>
+              <td>京阪「祇園四条駅」徒歩5分 ／ 阪急「河原町駅」徒歩8分</td>
+            </tr>
+            <tr>
+              <th>支払い</th>
+              <td>現金 ／ クレジットカード（Visa・Mastercard・AMEX）／ QR決済</td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- シーン別おすすめ度 -->
+        <div class="section-block">
+          <div class="block-title">シーン別おすすめ度</div>
+          <div class="scene-list">
+            <div class="scene-item">
+              <div class="scene-icon">💍</div>
+              <div class="scene-label">記念日</div>
+              <div class="scene-score score-great">◎ 最適</div>
+            </div>
+            <div class="scene-item">
+              <div class="scene-icon">👩‍❤️‍👨</div>
+              <div class="scene-label">カップル</div>
+              <div class="scene-score score-great">◎ 最適</div>
+            </div>
+            <div class="scene-item">
+              <div class="scene-icon">🧳</div>
+              <div class="scene-label">ひとり旅</div>
+              <div class="scene-score score-great">◎ 最適</div>
+            </div>
+            <div class="scene-item">
+              <div class="scene-icon">👩‍👩‍👧</div>
+              <div class="scene-label">女子旅</div>
+              <div class="scene-score score-good">○ おすすめ</div>
+            </div>
+            <div class="scene-item">
+              <div class="scene-icon">👨‍👩‍👧</div>
+              <div class="scene-label">家族旅行</div>
+              <div class="scene-score score-fair">△ 要相談</div>
+            </div>
+            <div class="scene-item">
+              <div class="scene-icon">🎉</div>
+              <div class="scene-label">グループ</div>
+              <div class="scene-score score-fair">△ 要相談</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 写真ギャラリー -->
+        <div class="section-block">
+          <div class="block-title">写真ギャラリー</div>
+          <div class="gallery">
+            <div class="gallery-item">🍱</div>
+            <div class="gallery-item">🍣</div>
+            <div class="gallery-item">🏯</div>
+            <div class="gallery-item">🍵</div>
+            <div class="gallery-item">🕯️</div>
+          </div>
+          <p style="font-size: 12px; color: var(--text-light); margin-top: 8px; text-align: right;">
+            写真はイメージです
+          </p>
+        </div>
+
+        <!-- お客様の声 -->
+        <div class="section-block">
+          <div class="block-title">旅行者からの口コミ（142件）</div>
+          <div class="review-list">
+            <div class="review-card">
+              <div class="review-header">
+                <div class="reviewer">
+                  <div class="avatar">👩</div>
+                  <div>
+                    <div class="reviewer-name">澄川めぐる</div>
+                    <div class="reviewer-meta">34歳・記念日旅行 ／ 京都 ／ 2026年8月</div>
+                  </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+              </div>
+              <div class="review-text">
+                夫との結婚記念日に利用しました。個室で静かな空間で、旬の食材を使ったコースが本当に素晴らしかった。トキナルで「記念日シーン」で検索して見つけたのですが、<strong>スタッフの方にも「記念日のお客様ですか？」と声をかけていただき感動しました。</strong>旅行中の食事で初めて「全部正解だった」と感じた夜でした。また必ず来ます。
+              </div>
+              <span class="review-tag">💍 記念日</span>
+              <span class="review-tag">個室</span>
+            </div>
+            <div class="review-card">
+              <div class="review-header">
+                <div class="reviewer">
+                  <div class="avatar">🧑</div>
+                  <div>
+                    <div class="reviewer-name">村上けんた</div>
+                    <div class="reviewer-meta">38歳・ひとり旅 ／ 京都 ／ 2026年7月</div>
+                  </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+              </div>
+              <div class="review-text">
+                カウンター席でのひとり飯。板前さんとの会話が楽しく、京都の旬の食材について色々教えてもらえた。<strong>ひとりでも居心地が良く、むしろひとり旅の醍醐味を存分に楽しめた。</strong>日本酒のペアリングも最高でした。
+              </div>
+              <span class="review-tag">🧳 ひとり旅</span>
+              <span class="review-tag">日本酒</span>
+            </div>
+            <div class="review-card">
+              <div class="review-header">
+                <div class="reviewer">
+                  <div class="avatar">👩‍🦰</div>
+                  <div>
+                    <div class="reviewer-name">山田あかり</div>
+                    <div class="reviewer-meta">30代・女子旅 ／ 京都 ／ 2026年6月</div>
+                  </div>
+                </div>
+                <div class="review-stars">★★★★☆</div>
+              </div>
+              <div class="review-text">
+                友人との女子旅で利用。コースの品数が多くてお腹いっぱいになりました。お料理は繊細で美しく、写真映えもばっちり。<strong>予約時に「女子旅です」と伝えたら、少し小盛りにしてもらえた心遣いが嬉しかった。</strong>少し値段が高めですが、特別な日なら絶対おすすめ。
+              </div>
+              <span class="review-tag">👩‍👩‍👧 女子旅</span>
+            </div>
+          </div>
+          <div style="text-align: center; margin-top: 24px;">
+            <a href="#" style="color: var(--accent); font-size: 14px; font-weight: 700;">すべての口コミを見る（142件） →</a>
+          </div>
+        </div>
+
+      </div><!-- /detail-main -->
+
+      <!-- RIGHT COLUMN -->
+      <div class="reservation-panel">
+        <div class="res-card">
+          <div class="res-price">¥8,000 <span>〜 / 人</span></div>
+          <div class="res-rating">
+            <span class="res-stars">★★★★★</span>
+            <strong>4.8</strong>
+            <span style="color: var(--text-light);">（142件）</span>
+          </div>
+          <div class="res-form">
+            <div class="res-field">
+              <label>利用日</label>
+              <input type="date" min="2026-09-03">
+            </div>
+            <div class="res-field">
+              <label>時間帯</label>
+              <select>
+                <option value="">選択してください</option>
+                <option>昼（11:30〜14:00）</option>
+                <option selected>夜（17:30〜22:00）</option>
+              </select>
+            </div>
+            <div class="res-field">
+              <label>人数</label>
+              <select>
+                <option>1名</option>
+                <option selected>2名</option>
+                <option>3名</option>
+                <option>4名</option>
+              </select>
+            </div>
+            <div class="res-field">
+              <label>シーン</label>
+              <select>
+                <option value="">シーンを選択</option>
+                <option selected>💍 記念日</option>
+                <option>👩‍❤️‍👨 カップル</option>
+                <option>🧳 ひとり旅</option>
+                <option>👩‍👩‍👧 女子旅</option>
+              </select>
+            </div>
+            <button type="button" class="btn-reserve">席を予約する →</button>
+          </div>
+          <p style="background:#FFF3CD;border:1px solid #F0C04E;border-radius:6px;padding:8px 12px;font-size:12px;color:#856404;text-align:center;margin-top:10px;">
+            ⚠️ <strong>デモ版</strong>：この予約フォームはサンプルです。
+          </p>
+          <p class="res-note">予約は無料・キャンセル料は3日前から</p>
+        </div>
+
+        <!-- 近隣宿泊施設 -->
+        <div class="nearby-card">
+          <div class="nearby-title">この店舗に近い宿を探す</div>
+          <div class="nearby-desc">
+            「記念日シーン」×「祇園エリア」で<br>
+            トキナルが厳選した宿泊施設をご提案します。宿と夕食を同時に計画できます。
+          </div>
+          <a href="index.html#listings" class="btn-nearby">近隣の宿を見る →</a>
+        </div>
+      </div><!-- /reservation-panel -->
+
+    </div><!-- /detail-layout -->
+  </div><!-- /container -->
+
+  <!-- FIXED BOTTOM CTA (SP only) -->
+  <div class="fixed-reserve">
+    <div class="fixed-reserve-inner">
+      <div>
+        <div class="fixed-price">¥8,000〜 <small>/ 人</small></div>
+        <div style="font-size: 12px; color: var(--text-light);">★★★★★ 4.8（142件）</div>
+      </div>
+      <button type="button" class="btn-reserve" style="width: auto; padding: 14px 28px; margin: 0; font-size: 15px;">
+        席を予約する →
+      </button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="background: var(--main); color: var(--dark-sub); padding: 32px 0; margin-top: 0;">
+    <div class="container" style="display:flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+      <div style="font-size: 20px; font-weight: 800; color: var(--white);">ト<span style="color:var(--accent)">キ</span>ナル</div>
+      <div style="font-size: 13px; display: flex; gap: 24px; flex-wrap: wrap;">
+        <a href="index.html" style="color: var(--dark-sub);">トップに戻る</a>
+        <a href="#" style="color: var(--dark-sub);">プライバシーポリシー</a>
+        <a href="#" style="color: var(--dark-sub);">利用規約</a>
+      </div>
+      <div style="font-size: 12px; color: rgba(232,213,176,0.4); width: 100%;">© 2026 トキナル All rights reserved. ｜ DMM 生成AI CAMP Lesson13</div>
+    </div>
+  </footer>
+
+  <script>
+    // Date input default: today + 1
+    const d = new Date(); d.setDate(d.getDate() + 1);
+    const dateStr = d.toISOString().split('T')[0];
+    const dateInput = document.querySelector('input[type="date"]');
+    if (dateInput) dateInput.value = dateStr;
+
+    // Reserve button (demo)
+    document.querySelectorAll('.btn-reserve').forEach(btn => {
+      btn.addEventListener('click', () => {
+        alert('【デモ】予約フォームへ進みます。\n実装後は予約確認画面に遷移します。');
+      });
+    });
+  </script>
+</body>
+</html>

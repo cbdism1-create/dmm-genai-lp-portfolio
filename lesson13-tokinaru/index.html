@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>トキナル｜旅のシーンで、宿も食も見つかる</title>
+  <style>
+    /* ===== CSS RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      background-color: #F5EFE4;
+      color: #3A2E20;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --base:    #F5EFE4;
+      --main:    #2C3E50;
+      --accent:  #D4845A;
+      --text-deep: #3A2E20;
+      --text-mid:  #5C4A36;
+      --text-light: #8A7565;
+      --icon-bg: #F0E4D4;
+      --dark-bg: #2C3E50;
+      --dark-sub: #E8D5B0;
+      --white:   #FFFFFF;
+      --shadow:  0 4px 20px rgba(44,62,80,0.10);
+      --radius:  12px;
+    }
+
+    /* ===== UTILITY ===== */
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 80px 0; }
+    .section-alt { padding: 80px 0; background: var(--main); color: var(--white); }
+    .section-title {
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 700;
+      color: var(--text-deep);
+      text-align: center;
+      margin-bottom: 48px;
+      line-height: 1.4;
+    }
+    .section-alt .section-title { color: var(--white); }
+    .accent-line {
+      display: block;
+      width: 48px; height: 3px;
+      background: var(--accent);
+      margin: 12px auto 0;
+      border-radius: 2px;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--icon-bg);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== HEADER / NAV ===== */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(245,239,228,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(212,132,90,0.15);
+    }
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+      max-width: 1080px; margin: 0 auto; padding: 0 24px;
+    }
+    .logo {
+      font-size: 22px; font-weight: 800;
+      color: var(--main);
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links {
+      display: flex; gap: 28px; list-style: none;
+      font-size: 14px; font-weight: 500;
+    }
+    .nav-links a { color: var(--text-mid); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent); color: var(--white);
+      padding: 10px 20px; border-radius: 8px;
+      font-size: 14px; font-weight: 700;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: #C07348; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--main); margin: 5px 0; border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ===== HERO / FV ===== */
+    #fv {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #F5EFE4 0%, #EDE3D5 60%, #E4D5BE 100%);
+      display: flex; align-items: center;
+      padding-top: 64px;
+      position: relative; overflow: hidden;
+    }
+    #fv::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4845A' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .fv-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+      max-width: 1080px; margin: 0 auto; padding: 60px 24px;
+      position: relative; z-index: 1;
+    }
+    .fv-scene-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--icon-bg);
+      color: var(--accent); font-size: 13px; font-weight: 700;
+      padding: 6px 16px; border-radius: 20px;
+      margin-bottom: 24px;
+    }
+    .fv-scene-badge::before { content: '✦'; font-size: 10px; }
+    h1 {
+      font-size: clamp(26px, 4.5vw, 44px);
+      font-weight: 800;
+      color: var(--main);
+      line-height: 1.35;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    h1 em { color: var(--accent); font-style: normal; }
+    .fv-sub {
+      font-size: clamp(14px, 1.8vw, 16px);
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
+    .fv-ctas { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent); color: var(--white);
+      padding: 16px 32px; border-radius: 10px;
+      font-size: 16px; font-weight: 700;
+      transition: all 0.2s; border: none; cursor: pointer;
+      box-shadow: 0 4px 16px rgba(212,132,90,0.35);
+    }
+    .btn-primary:hover { background: #C07348; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212,132,90,0.45); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--text-mid); font-size: 14px;
+      padding: 10px 0;
+    }
+    .btn-secondary::before { content: '▶'; font-size: 10px; color: var(--accent); }
+    .fv-note { font-size: 12px; color: var(--text-light); margin-top: 4px; }
+    /* Scene UI mockup */
+    .fv-visual {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      opacity: 0.95;
+    }
+    .fv-visual-title {
+      font-size: 13px; color: var(--text-light);
+      margin-bottom: 16px; font-weight: 500;
+    }
+    .scene-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px; margin-bottom: 20px;
+    }
+    .scene-btn {
+      background: var(--base); border: 2px solid transparent;
+      border-radius: 10px; padding: 14px 10px;
+      text-align: center; cursor: pointer;
+      font-size: 13px; color: var(--text-mid);
+      font-weight: 600; transition: all 0.2s;
+    }
+    .scene-btn .icon { font-size: 22px; margin-bottom: 4px; }
+    .scene-btn:hover, .scene-btn.active {
+      border-color: var(--accent);
+      background: var(--icon-bg);
+      color: var(--accent);
+    }
+    .scene-btn.active { background: var(--icon-bg); }
+    .fv-search {
+      display: flex; gap: 8px;
+    }
+    .fv-search input {
+      flex: 1; padding: 12px 16px;
+      border: 2px solid #E8D5B0; border-radius: 8px;
+      font-size: 14px; color: var(--text-deep);
+      background: var(--base);
+      outline: none;
+    }
+    .fv-search input:focus { border-color: var(--accent); }
+    .fv-search button {
+      background: var(--accent); color: var(--white);
+      border: none; border-radius: 8px;
+      padding: 12px 20px; cursor: pointer;
+      font-size: 14px; font-weight: 700;
+    }
+    /* Stats strip */
+    .stats-strip {
+      background: var(--main);
+      padding: 20px 0;
+    }
+    .stats-inner {
+      display: flex; justify-content: center; gap: 60px;
+      max-width: 1080px; margin: 0 auto; padding: 0 24px;
+    }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: clamp(20px, 3vw, 28px); font-weight: 800; color: var(--accent); }
+    .stat-label { font-size: 12px; color: var(--dark-sub); margin-top: 2px; }
+
+    /* ===== SECTION 2: 共感・課題提示 ===== */
+    #issue { background: var(--white); }
+    .issue-content {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; align-items: start;
+    }
+    .issue-text p {
+      font-size: 16px; line-height: 1.9;
+      color: var(--text-mid);
+      margin-bottom: 24px;
+    }
+    .data-row {
+      display: flex; flex-wrap: wrap; gap: 16px;
+      margin-top: 32px;
+    }
+    .data-card {
+      flex: 1; min-width: 120px;
+      background: var(--base);
+      border-radius: 12px; padding: 20px 16px;
+      text-align: center;
+    }
+    .data-num {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800; color: var(--accent);
+      display: block; line-height: 1.1;
+    }
+    .data-desc { font-size: 12px; color: var(--text-mid); margin-top: 6px; }
+    .quote-block {
+      background: var(--base); border-left: 4px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 24px 24px 20px;
+      font-size: 15px; line-height: 1.8;
+      color: var(--text-mid);
+    }
+    .quote-block strong { color: var(--text-deep); }
+    .quote-block .speaker {
+      margin-top: 12px; font-size: 12px;
+      color: var(--text-light);
+    }
+
+    /* ===== SECTION 3: サービス紹介 ===== */
+    #service { background: var(--base); }
+    .steps {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .step-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px 24px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .step-num {
+      position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
+      width: 36px; height: 36px;
+      background: var(--accent); color: var(--white);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 800;
+    }
+    .step-icon { font-size: 36px; margin-bottom: 16px; }
+    .step-title {
+      font-size: 16px; font-weight: 700;
+      color: var(--text-deep); margin-bottom: 10px;
+    }
+    .step-desc { font-size: 14px; color: var(--text-mid); line-height: 1.7; }
+    .steps-arrow {
+      display: flex; align-items: center;
+      justify-content: center; gap: 0;
+    }
+    .scene-tags {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      justify-content: center; margin-top: 40px;
+    }
+    .scene-tag {
+      background: var(--icon-bg); color: var(--accent);
+      border-radius: 20px; padding: 8px 18px;
+      font-size: 13px; font-weight: 600;
+    }
+
+    /* ===== SECTION 4: 強み ===== */
+    #strengths { background: var(--main); }
+    .strengths-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .strength-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(232,213,176,0.2);
+      border-radius: var(--radius); padding: 36px 24px;
+    }
+    .strength-icon-wrap {
+      width: 56px; height: 56px;
+      background: var(--icon-bg);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      margin: 0 auto 20px;
+    }
+    .strength-title {
+      font-size: 16px; font-weight: 700;
+      color: var(--white); margin-bottom: 10px;
+      text-align: center;
+    }
+    .strength-desc {
+      font-size: 14px; color: var(--dark-sub);
+      line-height: 1.7; text-align: center;
+    }
+    .compare-table {
+      width: 100%; border-collapse: collapse;
+      margin-top: 48px; font-size: 14px;
+    }
+    .compare-table th {
+      padding: 12px 16px; text-align: center;
+      color: var(--dark-sub); font-weight: 600;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .compare-table th.highlight { color: var(--accent); }
+    .compare-table td {
+      padding: 12px 16px; text-align: center;
+      color: var(--dark-sub);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .compare-table tr:hover td { background: rgba(255,255,255,0.03); }
+    .check { color: var(--accent); font-size: 18px; }
+    .cross { color: rgba(255,255,255,0.3); font-size: 18px; }
+    .cta-center { text-align: center; margin-top: 48px; }
+
+    /* ===== SECTION 5: 安心 ===== */
+    #trust { background: var(--white); }
+    .trust-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .trust-card {
+      background: var(--base);
+      border-radius: var(--radius); padding: 36px 24px;
+      text-align: center;
+    }
+    .trust-icon {
+      width: 56px; height: 56px;
+      background: var(--icon-bg); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin: 0 auto 20px;
+    }
+    .trust-title { font-size: 16px; font-weight: 700; color: var(--text-deep); margin-bottom: 10px; }
+    .trust-desc { font-size: 14px; color: var(--text-mid); line-height: 1.7; }
+
+    /* ===== SECTION 6: 利用者の声 ===== */
+    #voices { background: var(--base); }
+    .voices-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .voice-card {
+      background: var(--white);
+      border-radius: var(--radius); padding: 32px;
+      box-shadow: var(--shadow);
+    }
+    .stars { color: var(--accent); font-size: 18px; margin-bottom: 12px; }
+    .voice-text {
+      font-size: 15px; color: var(--text-mid);
+      line-height: 1.8; margin-bottom: 20px;
+    }
+    .voice-text strong { color: var(--accent); }
+    .voice-author {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 13px; color: var(--text-light);
+    }
+    .avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--icon-bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .author-name { font-weight: 600; color: var(--text-mid); margin-bottom: 2px; }
+
+    /* ===== SECTION 7: 使い方 ===== */
+    #howto { background: var(--main); }
+    .howto-steps {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 16px; position: relative;
+    }
+    .howto-step {
+      text-align: center; padding: 24px 16px;
+    }
+    .howto-num {
+      width: 44px; height: 44px;
+      background: var(--accent); color: var(--white);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 800;
+      margin: 0 auto 16px;
+    }
+    .howto-icon { font-size: 32px; margin-bottom: 12px; }
+    .howto-title { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .howto-desc { font-size: 13px; color: var(--dark-sub); line-height: 1.6; }
+    .howto-note {
+      text-align: center; margin-top: 40px;
+      font-size: 14px; color: var(--dark-sub);
+    }
+    .howto-note strong { color: var(--accent); }
+
+    /* ===== SECTION 8: 登録フォーム ===== */
+    #register { background: var(--base); }
+    .register-box {
+      max-width: 560px; margin: 0 auto;
+      background: var(--white); border-radius: 20px;
+      padding: 48px 40px; box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .register-badges {
+      display: flex; justify-content: center; gap: 12px;
+      flex-wrap: wrap; margin-bottom: 28px;
+    }
+    .register-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: var(--icon-bg); color: var(--accent);
+      font-size: 12px; font-weight: 700;
+      padding: 6px 14px; border-radius: 20px;
+    }
+    .register-box h2 {
+      font-size: clamp(18px, 3vw, 24px);
+      font-weight: 700; color: var(--text-deep);
+      margin-bottom: 32px; line-height: 1.4;
+    }
+    .form-group { margin-bottom: 16px; text-align: left; }
+    .form-group label {
+      display: block; font-size: 13px; font-weight: 600;
+      color: var(--text-mid); margin-bottom: 6px;
+    }
+    .form-group input {
+      width: 100%; padding: 14px 16px;
+      border: 2px solid #E8D5B0; border-radius: 8px;
+      font-size: 15px; color: var(--text-deep);
+      background: var(--base); outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus { border-color: var(--accent); }
+    .btn-submit {
+      width: 100%; padding: 16px;
+      background: var(--accent); color: var(--white);
+      border: none; border-radius: 10px;
+      font-size: 16px; font-weight: 700;
+      cursor: pointer; margin-top: 8px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 16px rgba(212,132,90,0.35);
+    }
+    .btn-submit:hover { background: #C07348; transform: translateY(-2px); }
+    .sns-divider {
+      display: flex; align-items: center; gap: 12px;
+      margin: 20px 0; color: var(--text-light); font-size: 13px;
+    }
+    .sns-divider::before, .sns-divider::after {
+      content: ''; flex: 1; height: 1px; background: #E8D5B0;
+    }
+    .sns-btns { display: flex; gap: 10px; }
+    .sns-btn {
+      flex: 1; padding: 12px; border-radius: 8px;
+      font-size: 13px; font-weight: 600;
+      cursor: pointer; border: 2px solid #E8D5B0;
+      background: var(--white); color: var(--text-mid);
+      transition: all 0.2s;
+    }
+    .sns-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .form-note {
+      font-size: 12px; color: var(--text-light);
+      margin-top: 16px; line-height: 1.6;
+    }
+    .form-note a { color: var(--accent); text-decoration: underline; }
+
+    /* ===== SECTION 9: 店舗一覧プレビュー ===== */
+    #listings { background: var(--white); }
+    .listings-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; margin-bottom: 40px;
+    }
+    .listing-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .listing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(44,62,80,0.15);
+    }
+    .listing-card a { display: block; }
+    .card-img {
+      width: 100%; height: 180px;
+      background: linear-gradient(135deg, #E4D5BE, #C9B89A);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 48px;
+      position: relative; overflow: hidden;
+    }
+    .card-img-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 8px 12px;
+      background: linear-gradient(transparent, rgba(44,62,80,0.6));
+      display: flex; gap: 6px;
+    }
+    .card-scene-tag {
+      background: rgba(212,132,90,0.9); color: #fff;
+      font-size: 11px; font-weight: 700; padding: 3px 10px;
+      border-radius: 20px;
+    }
+    .card-body { padding: 20px; }
+    .card-title {
+      font-size: 16px; font-weight: 700;
+      color: var(--text-deep); margin-bottom: 6px;
+    }
+    .card-meta {
+      font-size: 13px; color: var(--text-light);
+      margin-bottom: 10px;
+    }
+    .card-rating {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px; margin-bottom: 10px;
+    }
+    .card-stars { color: var(--accent); }
+    .card-score { font-weight: 700; color: var(--text-deep); }
+    .card-count { color: var(--text-light); }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .card-tag {
+      background: var(--icon-bg); color: var(--accent);
+      font-size: 11px; padding: 3px 10px; border-radius: 20px;
+    }
+    .listings-cta { text-align: center; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 2px solid var(--accent); color: var(--accent);
+      padding: 14px 32px; border-radius: 10px;
+      font-size: 15px; font-weight: 700;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { background: var(--accent); color: var(--white); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--main); color: var(--dark-sub);
+      padding: 48px 0 24px;
+    }
+    .footer-inner {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px; margin-bottom: 40px;
+    }
+    .footer-brand .logo { color: var(--white); margin-bottom: 12px; }
+    .footer-brand p { font-size: 13px; color: var(--dark-sub); line-height: 1.7; }
+    .footer-links h4 {
+      font-size: 13px; font-weight: 700; color: var(--white);
+      margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { font-size: 13px; color: var(--dark-sub); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 12px; color: rgba(232,213,176,0.5);
+    }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    .fade-in {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .section, .section-alt { padding: 60px 0; }
+      .fv-inner { grid-template-columns: 1fr; gap: 40px; padding: 40px 24px; }
+      .fv-visual { display: none; }
+      .fv-ctas { align-items: stretch; }
+      .btn-primary { justify-content: center; width: 100%; padding: 16px 24px; }
+      .stats-inner { gap: 24px; flex-wrap: wrap; }
+      .issue-content { grid-template-columns: 1fr; gap: 32px; }
+      .steps { grid-template-columns: 1fr; }
+      .strengths-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .voices-grid { grid-template-columns: 1fr; }
+      .howto-steps { grid-template-columns: repeat(2, 1fr); }
+      .listings-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .register-box { padding: 36px 24px; }
+      .compare-table { font-size: 12px; }
+      .compare-table th, .compare-table td { padding: 10px 8px; }
+    }
+
+    /* ===== MOBILE MENU ===== */
+    .mobile-menu {
+      display: none;
+      position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
+      background: var(--base);
+      border-bottom: 1px solid rgba(212,132,90,0.15);
+      padding: 20px 24px;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; }
+    .mobile-menu li { margin-bottom: 16px; }
+    .mobile-menu a { font-size: 16px; font-weight: 600; color: var(--text-mid); }
+    .mobile-menu .nav-cta { display: block; text-align: center; margin-top: 8px; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <div class="logo">ト<span>キ</span>ナル</div>
+      <ul class="nav-links">
+        <li><a href="#service">サービス</a></li>
+        <li><a href="#strengths">強み</a></li>
+        <li><a href="#voices">口コミ</a></li>
+        <li><a href="#listings">店舗を探す</a></li>
+      </ul>
+      <a href="#register" class="nav-cta">無料で始める</a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#service" onclick="closeMenu()">サービス</a></li>
+      <li><a href="#strengths" onclick="closeMenu()">強み</a></li>
+      <li><a href="#voices" onclick="closeMenu()">口コミ</a></li>
+      <li><a href="#listings" onclick="closeMenu()">店舗を探す</a></li>
+    </ul>
+    <a href="#register" class="nav-cta" onclick="closeMenu()">無料で始める →</a>
+  </div>
+
+  <!-- SECTION 1: HERO / FV -->
+  <section id="fv">
+    <div class="fv-inner">
+      <div class="fv-text">
+        <div class="fv-scene-badge">旅のシーン別サービス、はじめて</div>
+        <h1>旅のシーンを選ぶだけで、<br>宿も食も、<em>もう迷わない。</em></h1>
+        <p class="fv-sub">記念日・家族旅行・ひとり旅。行き先より先に「どんな旅にしたいか」を選ぶだけで、宿泊予約と旅先グルメが同時に見つかる。</p>
+        <div class="fv-ctas">
+          <a href="#register" class="btn-primary">シーンから旅を探す（無料） →</a>
+          <a href="#service" class="btn-secondary">サービスの詳細を見る</a>
+          <p class="fv-note">登録不要で検索可能 ／ クレジットカード不要</p>
+        </div>
+      </div>
+      <div class="fv-visual">
+        <p class="fv-visual-title">🗾 どんな旅にしますか？</p>
+        <div class="scene-grid">
+          <div class="scene-btn active">
+            <div class="icon">💍</div>記念日
+          </div>
+          <div class="scene-btn">
+            <div class="icon">👨‍👩‍👧</div>家族旅行
+          </div>
+          <div class="scene-btn">
+            <div class="icon">🧳</div>ひとり旅
+          </div>
+          <div class="scene-btn">
+            <div class="icon">👩‍👩‍👧</div>女子旅
+          </div>
+        </div>
+        <div class="fv-search">
+          <input type="text" placeholder="エリアや宿泊地を入力…" aria-label="検索キーワード">
+          <button type="button">検索</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-num">1,000+</div>
+        <div class="stat-label">掲載施設数</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">47都道府県</div>
+        <div class="stat-label">全国対応</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">72%</div>
+        <div class="stat-label">旅先グルメで失敗経験あり（自社調査）</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3分</div>
+        <div class="stat-label">宿＋グルメ計画完了の目安</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: 共感・課題提示 -->
+  <section id="issue" class="section">
+    <div class="container">
+      <p class="badge">PROBLEM</p>
+      <h2 class="section-title">
+        旅の準備、こんなことで<br>消耗していませんか？
+        <span class="accent-line"></span>
+      </h2>
+      <div class="issue-content fade-in">
+        <div class="issue-text">
+          <p>宿はじゃらん、グルメはTabelog、カフェはInstagramで検索して、気づいたら2時間経っていた——そんな経験、ありませんか？</p>
+          <p>「食事は現地で考えよう」と諦めた記念日旅行で、夕食後のカフェ探しに失敗。「せっかくの記念日なのに」と、帰り道にモヤモヤした。</p>
+          <p>日常使いのグルメサービスは、<strong>「旅先の特別な夜」を知らない。</strong>旅行者目線で、旅行文脈に合うグルメを提案してくれるサービスが、今まで存在しなかったのです。</p>
+          <div class="data-row">
+            <div class="data-card">
+              <span class="data-num">72%</span>
+              <div class="data-desc">旅先グルメで<br>失敗・迷った経験</div>
+            </div>
+            <div class="data-card">
+              <span class="data-num">68%</span>
+              <div class="data-desc">宿選びと食選びを<br>別々に調べている</div>
+            </div>
+            <div class="data-card">
+              <span class="data-num">3.2h</span>
+              <div class="data-desc">旅行計画に<br>費やす平均時間</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="quote-block">
+            <strong>「宿はじゃらん、グルメはTabelog、カフェはInstagram…情報がバラバラで疲れる」</strong>
+            <p>検索結果に出てくるのは、地元の人向けのチェーン店ばかり。旅行者向けの「特別な夜に合うお店」は、どこを探せばいいのか分からない。</p>
+            <div class="speaker">── 34歳・会社員（旅行好き）の声</div>
+          </div>
+          <div class="quote-block" style="margin-top: 16px;">
+            <strong>「記念日なのに、『ここで良かったのかな』とモヤモヤしたまま帰った」</strong>
+            <p>せっかくの旅行なのに、食事で失敗するたびに「もっとちゃんと調べれば良かった」と後悔する。</p>
+            <div class="speaker">── 31歳・会社員（夫婦旅）の声</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: サービス紹介 -->
+  <section id="service" class="section" style="background: var(--base);">
+    <div class="container">
+      <p class="badge">WHAT WE DO</p>
+      <h2 class="section-title">
+        「トキナル」は、旅のシーンで探す、<br>はじめての旅体験サービスです。
+        <span class="accent-line"></span>
+      </h2>
+      <p style="text-align:center; color: var(--text-mid); margin-bottom: 48px; font-size: 15px;">
+        たった3ステップで、これまで2時間かかっていた旅の計画が完結します。
+      </p>
+      <div class="steps fade-in">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-icon">🎯</div>
+          <div class="step-title">シーンを選ぶ</div>
+          <div class="step-desc">記念日・家族旅行・ひとり旅など、「どんな旅にしたいか」を選ぶだけ。エリアや価格より先に、旅の目的から始める。</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-icon">🏡</div>
+          <div class="step-title">宿が見つかる</div>
+          <div class="step-desc">シーンに合った宿泊施設が提案される。エリア・価格帯・人数で絞り込み可能。掲載施設1,000件以上。</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div class="step-icon">🍽️</div>
+          <div class="step-title">旅先グルメも出てくる</div>
+          <div class="step-desc">宿泊データ（シーン・エリア・人数）をもとに、旅行文脈に合ったグルメが自動提案。同じ画面で予約完了。</div>
+        </div>
+      </div>
+      <div class="scene-tags fade-in">
+        <span class="scene-tag">💍 記念日</span>
+        <span class="scene-tag">👨‍👩‍👧 家族旅行</span>
+        <span class="scene-tag">🧳 ひとり旅</span>
+        <span class="scene-tag">👩‍👩‍👧 女子旅</span>
+        <span class="scene-tag">♨️ 温泉旅</span>
+        <span class="scene-tag">🌿 リトリート</span>
+        <span class="scene-tag">🎉 グループ旅行</span>
+        <span class="scene-tag">🌸 季節の旅</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: 強み -->
+  <section id="strengths" class="section-alt">
+    <div class="container">
+      <p class="badge" style="background: rgba(212,132,90,0.2);">WHY US</p>
+      <h2 class="section-title">
+        他のサービスとここが違う、<br>3つの理由。
+        <span class="accent-line"></span>
+      </h2>
+      <div class="strengths-grid fade-in">
+        <div class="strength-card">
+          <div class="strength-icon-wrap">🎯</div>
+          <div class="strength-title">「どんな旅か」で探せる唯一のOTA</div>
+          <div class="strength-desc">エリア・価格ではなく旅行シーンを軸にした検索は、国内宿泊予約サービスでトキナルだけ。記念日旅行なら記念日に最適な宿が見つかる。</div>
+        </div>
+        <div class="strength-card">
+          <div class="strength-icon-wrap">🍽️</div>
+          <div class="strength-title">旅先グルメも宿と同じ画面で完結</div>
+          <div class="strength-desc">宿泊予約のデータをもとに旅行者目線のグルメを自動提案。日常使いのグルメサービスにはできない「旅の文脈」を読んだ提案。</div>
+        </div>
+        <div class="strength-card">
+          <div class="strength-icon-wrap">✨</div>
+          <div class="strength-title">20代から60代まで使いやすい設計</div>
+          <div class="strength-desc">予約完了まで最短3ステップ。難しい操作はゼロ。世代を選ばない直感的な予約フローで、はじめての方でも安心して使える。</div>
+        </div>
+      </div>
+      <table class="compare-table fade-in">
+        <thead>
+          <tr>
+            <th style="text-align:left;">機能</th>
+            <th class="highlight">トキナル</th>
+            <th>じゃらん</th>
+            <th>楽天トラベル</th>
+            <th>OZmall</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align:left; color: var(--dark-sub);">旅行シーン別検索</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="cross">×</span></td>
+            <td><span class="cross">×</span></td>
+            <td><span class="cross">×</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:left; color: var(--dark-sub);">旅先グルメ連携提案</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="cross">×</span></td>
+            <td><span class="cross">×</span></td>
+            <td><span class="cross">×</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:left; color: var(--dark-sub);">宿泊予約</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:left; color: var(--dark-sub);">登録不要で検索</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="cross">×</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="cta-center fade-in">
+        <a href="#register" class="btn-primary">まずはシーンで探してみる（登録不要） →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: 安心・信頼 -->
+  <section id="trust" class="section">
+    <div class="container">
+      <p class="badge">TRUST</p>
+      <h2 class="section-title">
+        安心して使える、3つの理由。
+        <span class="accent-line"></span>
+      </h2>
+      <div class="trust-grid fade-in">
+        <div class="trust-card">
+          <div class="trust-icon">🗾</div>
+          <div class="trust-title">掲載施設1,000件以上<br>全国47都道府県対応</div>
+          <div class="trust-desc">主要観光エリアを網羅。北海道から沖縄まで、旅先がどこでもシーン検索で探せます。</div>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon">🎁</div>
+          <div class="trust-title">登録・シーン検索は無料<br>クレジットカード不要</div>
+          <div class="trust-desc">会員登録も、シーン検索も完全無料。クレジットカードの登録なしで、すぐに体験できます。</div>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon">🔒</div>
+          <div class="trust-title">個人情報は暗号化管理<br>第三者への提供なし</div>
+          <div class="trust-desc">SSL暗号化通信を採用。お客様の個人情報は厳重に管理し、第三者への提供は一切行いません。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: 利用者の声 -->
+  <section id="voices" class="section" style="background: var(--base);">
+    <div class="container">
+      <p class="badge">VOICES</p>
+      <h2 class="section-title">
+        「旅の準備が、こんなに楽になるとは<br>思っていなかった」
+        <span class="accent-line"></span>
+      </h2>
+      <div class="voices-grid fade-in">
+        <div class="voice-card">
+          <div class="stars">★★★★★</div>
+          <div class="voice-text">夫の誕生日旅行でトキナルを使ったら、<strong>宿と夕食後のカフェまで全部まとめて見つかって感動しました。</strong>今まで3つのアプリを行き来していたのが信じられない。準備の時間が半分以下になりました。</div>
+          <div class="voice-author">
+            <div class="avatar">👩</div>
+            <div>
+              <div class="author-name">山田あかり さん</div>
+              <div>30代女性・夫婦旅・京都</div>
+            </div>
+          </div>
+        </div>
+        <div class="voice-card">
+          <div class="stars">★★★★★</div>
+          <div class="voice-text">記念日に使いたかったけど、シーンで選べるから<strong>迷わなかった。</strong>旅行後に「全部正解だった」と感じたのは初めてです。夫にも喜んでもらえて、本当に良かった。</div>
+          <div class="voice-author">
+            <div class="avatar">👩‍🦰</div>
+            <div>
+              <div class="author-name">澄川めぐる さん</div>
+              <div>34歳・会社員・記念日旅行・箱根</div>
+            </div>
+          </div>
+        </div>
+        <div class="voice-card">
+          <div class="stars">★★★★☆</div>
+          <div class="voice-text">ひとり旅なのに「おひとり様歓迎」のお宿と「カウンター席のある和食」を同時に提案してくれた。<strong>旅の文脈を読んでくれる感じが他のサービスと全然違う。</strong></div>
+          <div class="voice-author">
+            <div class="avatar">🧑</div>
+            <div>
+              <div class="author-name">村上けんた さん</div>
+              <div>38歳・男性・ひとり旅・金沢</div>
+            </div>
+          </div>
+        </div>
+        <div class="voice-card">
+          <div class="stars">★★★★★</div>
+          <div class="voice-text">家族旅行で子連れOKの宿と、<strong>子どもが喜ぶご当地グルメをセットで提案してくれた。</strong>子どもが「また行きたい！」と言った旅行はこれが初めてでした。</div>
+          <div class="voice-author">
+            <div class="avatar">👩‍👧</div>
+            <div>
+              <div class="author-name">田中さおり さん</div>
+              <div>40代女性・家族旅行・仙台</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cta-center fade-in" style="margin-top: 40px;">
+        <a href="#register" class="btn-primary">私も使ってみる（無料・30秒で登録完了） →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: 使い方 -->
+  <section id="howto" class="section-alt">
+    <div class="container">
+      <p class="badge" style="background: rgba(212,132,90,0.2);">HOW TO</p>
+      <h2 class="section-title">
+        登録から旅の計画まで、<br>最短3分で完了します。
+        <span class="accent-line"></span>
+      </h2>
+      <div class="howto-steps fade-in">
+        <div class="howto-step">
+          <div class="howto-num">1</div>
+          <div class="howto-icon">🎯</div>
+          <div class="howto-title">シーンを選ぶ</div>
+          <div class="howto-desc">記念日・家族旅行・ひとり旅など、「どんな旅にしたいか」をタップするだけ</div>
+        </div>
+        <div class="howto-step">
+          <div class="howto-num">2</div>
+          <div class="howto-icon">🏡</div>
+          <div class="howto-title">宿を予約</div>
+          <div class="howto-desc">提案された宿をエリア・価格帯で絞り込んで、気に入ったら即予約</div>
+        </div>
+        <div class="howto-step">
+          <div class="howto-num">3</div>
+          <div class="howto-icon">🍽️</div>
+          <div class="howto-title">グルメをチェック</div>
+          <div class="howto-desc">宿の予約情報をもとに旅先グルメが自動提案。お気に入りを保存して完了</div>
+        </div>
+        <div class="howto-step">
+          <div class="howto-num">4</div>
+          <div class="howto-icon">✈️</div>
+          <div class="howto-title">旅へ出発</div>
+          <div class="howto-desc">計画完了。あとは当日を楽しむだけ。旅中もアプリでグルメを確認できる</div>
+        </div>
+      </div>
+      <div class="howto-note fade-in">
+        <strong>登録は無料・30秒・SNSログイン対応</strong>（Google / Apple / LINE）
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: 登録フォーム -->
+  <section id="register" class="section">
+    <div class="container">
+      <div class="register-box fade-in">
+        <div class="demo-notice" style="background:#FFF3CD;border:1px solid #F0C04E;border-radius:8px;padding:10px 16px;margin-bottom:20px;font-size:13px;color:#856404;text-align:center;">
+          ⚠️ <strong>デモ版</strong>：このフォームはサンプルです。実際の登録・送信は行われません。
+        </div>
+        <div class="register-badges">
+          <span class="register-badge">✓ 完全無料</span>
+          <span class="register-badge">✓ 30秒で完了</span>
+          <span class="register-badge">✓ カード不要</span>
+        </div>
+        <h2>さあ、旅のシーンから<br>探してみましょう。</h2>
+        <form onsubmit="return false;">
+          <div class="form-group">
+            <label for="name">お名前</label>
+            <input type="text" id="name" placeholder="山田 花子" autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="email">メールアドレス</label>
+            <input type="email" id="email" placeholder="tabi@example.com" autocomplete="email">
+          </div>
+          <button type="submit" class="btn-submit">旅を探し始める →</button>
+        </form>
+        <div class="sns-divider">またはSNSで登録</div>
+        <div class="sns-btns">
+          <button class="sns-btn">🇬 Google</button>
+          <button class="sns-btn"> Apple</button>
+          <button class="sns-btn">💬 LINE</button>
+        </div>
+        <p class="form-note">
+          まずはシーンで検索するだけでもOK。登録後すぐに使えます。<br>
+          <a href="#">プライバシーポリシー</a>・<a href="#">利用規約</a>に同意の上ご登録ください。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 9: 店舗一覧プレビュー -->
+  <section id="listings" class="section" style="background: var(--white);">
+    <div class="container">
+      <p class="badge">RESTAURANTS</p>
+      <h2 class="section-title">
+        旅先グルメ、人気の掲載店舗
+        <span class="accent-line"></span>
+      </h2>
+      <p style="text-align:center; color: var(--text-mid); margin-bottom: 48px; font-size: 15px;">
+        宿泊先のエリアと旅行シーンに合わせて、トキナルが厳選した旅グルメ。
+      </p>
+      <div class="listings-grid fade-in">
+        <a href="detail.html" class="listing-card">
+          <div class="card-img">
+            🍣
+            <div class="card-img-overlay">
+              <span class="card-scene-tag">記念日◎</span>
+              <span class="card-scene-tag">カップル◎</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">旬彩 はなとき</div>
+            <div class="card-meta">和食・懐石 ／ 京都・祇園</div>
+            <div class="card-rating">
+              <span class="card-stars">★★★★★</span>
+              <span class="card-score">4.8</span>
+              <span class="card-count">（142件）</span>
+            </div>
+            <div class="card-tags">
+              <span class="card-tag">個室あり</span>
+              <span class="card-tag">予約可</span>
+              <span class="card-tag">¥8,000〜</span>
+            </div>
+          </div>
+        </a>
+        <a href="detail.html" class="listing-card">
+          <div class="card-img" style="background: linear-gradient(135deg, #D5C5A5, #B8A882);">
+            🍷
+            <div class="card-img-overlay">
+              <span class="card-scene-tag">記念日◎</span>
+              <span class="card-scene-tag">女子旅◎</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">BRASSERIE SOIR</div>
+            <div class="card-meta">フレンチ ／ 箱根・強羅</div>
+            <div class="card-rating">
+              <span class="card-stars">★★★★★</span>
+              <span class="card-score">4.7</span>
+              <span class="card-count">（89件）</span>
+            </div>
+            <div class="card-tags">
+              <span class="card-tag">夜景あり</span>
+              <span class="card-tag">¥12,000〜</span>
+            </div>
+          </div>
+        </a>
+        <a href="detail.html" class="listing-card">
+          <div class="card-img" style="background: linear-gradient(135deg, #C9BCA0, #A89874);">
+            🦞
+            <div class="card-img-overlay">
+              <span class="card-scene-tag">家族旅行◎</span>
+              <span class="card-scene-tag">グループ◎</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">海鮮処 あかね丸</div>
+            <div class="card-meta">海鮮・居酒屋 ／ 函館・西部地区</div>
+            <div class="card-rating">
+              <span class="card-stars">★★★★☆</span>
+              <span class="card-score">4.5</span>
+              <span class="card-count">（203件）</span>
+            </div>
+            <div class="card-tags">
+              <span class="card-tag">子連れ可</span>
+              <span class="card-tag">¥4,000〜</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="listings-cta fade-in">
+        <a href="#register" class="btn-outline">すべての旅先グルメを見る →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="logo">ト<span style="color:var(--accent)">キ</span>ナル</div>
+          <p>旅のシーンで宿も食も見つかる、<br>旅行シーン別プラットフォーム。<br>記念日・家族旅行・ひとり旅の<br>旅体験をもっと豊かに。</p>
+        </div>
+        <div class="footer-links">
+          <h4>サービス</h4>
+          <ul>
+            <li><a href="#service">トキナルとは</a></li>
+            <li><a href="#strengths">強みと特徴</a></li>
+            <li><a href="#howto">使い方</a></li>
+            <li><a href="#register">無料登録</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>サポート</h4>
+          <ul>
+            <li><a href="#">よくある質問</a></li>
+            <li><a href="#">お問い合わせ</a></li>
+            <li><a href="#">プライバシーポリシー</a></li>
+            <li><a href="#">利用規約</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 トキナル All rights reserved.</span>
+        <span>DMM 生成AI CAMP デザインコース Lesson13</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== MOBILE MENU =====
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+    function closeMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+
+    // ===== SCROLL FADE-IN =====
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ===== SCENE BUTTONS =====
+    document.querySelectorAll('.scene-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.scene-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    // ===== SMOOTH HEADER SHADOW =====
+    window.addEventListener('scroll', () => {
+      const h = document.querySelector('header');
+      h.style.boxShadow = window.scrollY > 10 ? '0 2px 16px rgba(44,62,80,0.10)' : 'none';
+    });
+  </script>
+</body>
+</html>
